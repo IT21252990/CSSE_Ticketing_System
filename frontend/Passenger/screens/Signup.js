@@ -10,13 +10,20 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from "../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
-import Checkbox from "expo-checkbox";
 import Button from "../components/Button";
+import { LinearGradient } from "expo-linear-gradient";
+
 
 const Signup = ({ navigation }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   return (
+    <LinearGradient
+      style={{
+        flex: 1,
+      }}
+      colors={[COLORS.primary, COLORS.tertinary]}
+    >
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={{ flex: 1, marginHorizontal: 22 }}>
         <View style={{ marginVertical: 22 }}>
@@ -28,7 +35,7 @@ const Signup = ({ navigation }) => {
               color: COLORS.black,
             }}
           >
-            Create Account
+            Create Your Passenger Account
           </Text>
 
           <Text
@@ -37,16 +44,90 @@ const Signup = ({ navigation }) => {
               color: COLORS.black,
             }}
           >
-            Connect with your friend today!
+            Connect with WayFare today!
           </Text>
         </View>
 
-        <View style={{ marginBottom: 12 }}>
+        {/* passenger signUp fistname */}
+
+        <View style={{ marginBottom: 10 }}>
           <Text
             style={{
               fontSize: 16,
               fontWeight: 400,
-              marginVertical: 8,
+              marginVertical: 5,
+            }}
+          >
+            Fist Name
+          </Text>
+
+          <View
+            style={{
+              width: "100%",
+              height: 40,
+              borderColor: COLORS.black,
+              borderWidth: 1,
+              borderRadius: 8,
+              alignItems: "center",
+              justifyContent: "center",
+              paddingLeft: 22,
+            }}
+          >
+            <TextInput
+              placeholder="Enter your First Name"
+              placeholderTextColor={COLORS.black}
+              keyboardType="email-address"
+              style={{
+                width: "100%",
+              }}
+            />
+          </View>
+        </View>
+
+        {/* passenger signUp lastname */}
+
+        <View style={{ marginBottom: 10 }}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: 400,
+              marginVertical: 10,
+            }}
+          >
+            Last Name
+          </Text>
+
+          <View
+            style={{
+              width: "100%",
+              height: 40,
+              borderColor: COLORS.black,
+              borderWidth: 1,
+              borderRadius: 8,
+              alignItems: "center",
+              justifyContent: "center",
+              paddingLeft: 22,
+            }}
+          >
+            <TextInput
+              placeholder="Enter your Last Name"
+              placeholderTextColor={COLORS.black}
+              keyboardType="email-address"
+              style={{
+                width: "100%",
+              }}
+            />
+          </View>
+        </View>
+
+        {/* Passenger Email Address */}
+
+        <View style={{ marginBottom: 10 }}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: 400,
+              marginVertical: 10,
             }}
           >
             Email address
@@ -55,7 +136,7 @@ const Signup = ({ navigation }) => {
           <View
             style={{
               width: "100%",
-              height: 48,
+              height: 40,
               borderColor: COLORS.black,
               borderWidth: 1,
               borderRadius: 8,
@@ -75,12 +156,14 @@ const Signup = ({ navigation }) => {
           </View>
         </View>
 
-        <View style={{ marginBottom: 12 }}>
+        {/* Passenger Mobile Number */}
+
+        <View style={{ marginBottom: 10 }}>
           <Text
             style={{
               fontSize: 16,
               fontWeight: 400,
-              marginVertical: 8,
+              marginVertical: 10,
             }}
           >
             Mobile Number
@@ -89,7 +172,7 @@ const Signup = ({ navigation }) => {
           <View
             style={{
               width: "100%",
-              height: 48,
+              height: 40,
               borderColor: COLORS.black,
               borderWidth: 1,
               borderRadius: 8,
@@ -99,18 +182,7 @@ const Signup = ({ navigation }) => {
               paddingLeft: 22,
             }}
           >
-            <TextInput
-              placeholder="+91"
-              placeholderTextColor={COLORS.black}
-              keyboardType="numeric"
-              style={{
-                width: "12%",
-                borderRightWidth: 1,
-                borderLeftColor: COLORS.grey,
-                height: "100%",
-              }}
-            />
-
+           
             <TextInput
               placeholder="Enter your phone number"
               placeholderTextColor={COLORS.black}
@@ -121,15 +193,13 @@ const Signup = ({ navigation }) => {
             />
           </View>
         </View>
-
-        {/* name, email ,mobile number ,  password , confirm password   */}
-
-        <View style={{ marginBottom: 12 }}>
+        {/* Passenger SignUp Password */}
+        <View style={{ marginBottom: 10 }}>
           <Text
             style={{
               fontSize: 16,
               fontWeight: 400,
-              marginVertical: 8,
+              marginVertical: 10,
             }}
           >
             Password
@@ -138,7 +208,7 @@ const Signup = ({ navigation }) => {
           <View
             style={{
               width: "100%",
-              height: 48,
+              height: 40,
               borderColor: COLORS.black,
               borderWidth: 1,
               borderRadius: 8,
@@ -172,20 +242,54 @@ const Signup = ({ navigation }) => {
           </View>
         </View>
 
-        <View
-          style={{
-            flexDirection: "row",
-            marginVertical: 6,
-          }}
-        >
-          <Checkbox
-            style={{ marginRight: 8 }}
-            value={isChecked}
-            onValueChange={setIsChecked}
-            color={isChecked ? COLORS.primary : undefined}
-          />
+        {/* Passenger SignUP Comfirm Password */}
 
-          <Text>I aggree to the terms and conditions</Text>
+        <View style={{ marginBottom: 10 }}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: 400,
+              marginVertical: 10,
+            }}
+          >
+            Comfirm Password
+          </Text>
+
+          <View
+            style={{
+              width: "100%",
+              height: 40,
+              borderColor: COLORS.black,
+              borderWidth: 1,
+              borderRadius: 8,
+              alignItems: "center",
+              justifyContent: "center",
+              paddingLeft: 22,
+            }}
+          >
+            <TextInput
+              placeholder="Enter your  Comfirm Password"
+              placeholderTextColor={COLORS.black}
+              secureTextEntry={isPasswordShown}
+              style={{
+                width: "100%",
+              }}
+            />
+
+            <TouchableOpacity
+              onPress={() => setIsPasswordShown(!isPasswordShown)}
+              style={{
+                position: "absolute",
+                right: 12,
+              }}
+            >
+              {isPasswordShown == true ? (
+                <Ionicons name="eye-off" size={24} color={COLORS.black} />
+              ) : (
+                <Ionicons name="eye" size={24} color={COLORS.black} />
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
 
         <Button
@@ -195,10 +299,10 @@ const Signup = ({ navigation }) => {
           style={{
             marginTop: 18,
             marginBottom: 4,
+            borderColor:COLORS.tertinary
           }}
         />
 
-    
         <View
           style={{
             flexDirection: "row",
@@ -213,7 +317,7 @@ const Signup = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 16,
-                color: COLORS.primary,
+                color: '#0000ff',
                 fontWeight: "bold",
                 marginLeft: 6,
               }}
@@ -224,6 +328,7 @@ const Signup = ({ navigation }) => {
         </View>
       </View>
     </SafeAreaView>
+    </LinearGradient>
   );
 };
 

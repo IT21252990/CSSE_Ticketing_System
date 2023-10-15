@@ -3,15 +3,26 @@ import React, { useState } from 'react'
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from '../constants/colors';
 import { Ionicons } from "@expo/vector-icons";
-import Checkbox from "expo-checkbox"
 import Button from '../components/Button';
+import { LinearGradient } from "expo-linear-gradient";
+import BottomTabNavigation from "../navigations/BottomTabNavigation";
+import Home from './Home'
+
+
 
 const Login = ({ navigation }) => {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     
     return (
+        <LinearGradient
+      style={{
+        flex: 1,
+      }}
+      colors={[COLORS.primary, COLORS.secondary]}
+    >
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+            
             <View style={{ flex: 1, marginHorizontal: 22 }}>
                 <View style={{ marginVertical: 22 }}>
                     <Text style={{
@@ -102,109 +113,18 @@ const Login = ({ navigation }) => {
                     </View>
                 </View>
 
-                <View style={{
-                    flexDirection: 'row',
-                    marginVertical: 6
-                }}>
-                    <Checkbox
-                        style={{ marginRight: 8 }}
-                        value={isChecked}
-                        onValueChange={setIsChecked}
-                        color={isChecked ? COLORS.primary : undefined}
-                    />
-
-                    <Text>Remenber Me</Text>
-                </View>
+            
 
                 <Button
                     title="Login"
-                    onPress={() => navigation.navigate("Home")}
+                    onPress={() => navigation.navigate("BottomTabNavigation")}
                     filled
                     style={{
                         marginTop: 18,
                         marginBottom: 4,
+                        borderColor:COLORS.tertinary
                     }}
                 />
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 20 }}>
-                    <View
-                        style={{
-                            flex: 1,
-                            height: 1,
-                            backgroundColor: COLORS.grey,
-                            marginHorizontal: 10
-                        }}
-                    />
-                    <Text style={{ fontSize: 14 }}>Or Login with</Text>
-                    <View
-                        style={{
-                            flex: 1,
-                            height: 1,
-                            backgroundColor: COLORS.grey,
-                            marginHorizontal: 10
-                        }}
-                    />
-                </View>
-
-                <View style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center'
-                }}>
-                    <TouchableOpacity
-                        onPress={() => console.log("Pressed")}
-                        style={{
-                            flex: 1,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            flexDirection: 'row',
-                            height: 52,
-                            borderWidth: 1,
-                            borderColor: COLORS.grey,
-                            marginRight: 4,
-                            borderRadius: 10
-                        }}
-                    >
-                        <Image
-                            source={require("../assets/facebook.png")}
-                            style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                            }}
-                            resizeMode='contain'
-                        />
-
-                        <Text>Facebook</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={() => console.log("Pressed")}
-                        style={{
-                            flex: 1,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            flexDirection: 'row',
-                            height: 52,
-                            borderWidth: 1,
-                            borderColor: COLORS.grey,
-                            marginRight: 4,
-                            borderRadius: 10
-                        }}
-                    >
-                        <Image
-                            source={require("../assets/google.png")}
-                            style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                            }}
-                            resizeMode='contain'
-                        />
-
-                        <Text>Google</Text>
-                    </TouchableOpacity>
-                </View>
-
                 <View style={{
                     flexDirection: "row",
                     justifyContent: "center",
@@ -216,14 +136,86 @@ const Login = ({ navigation }) => {
                     >
                         <Text style={{
                             fontSize: 16,
-                            color: COLORS.primary,
+                            color: '#0000ff',
                             fontWeight: "bold",
                             marginLeft: 6
                         }}>Register</Text>
                     </Pressable>
                 </View>
+
+                <View>
+          <Image
+            source={require("../assets/hero1.jpg")}
+            style={{
+              height: 100,
+              width: 100,
+              borderRadius: 20,
+              position: "absolute",
+              top: 10,
+              transform: [
+                { translateX: 20 },
+                { translateY: 50 },
+                { rotate: "-15deg" },
+              ],
+            }}
+          />
+
+          <Image
+            source={require("../assets/hero3.jpg")}
+            style={{
+              height: 100,
+              width: 100,
+              borderRadius: 20,
+              position: "absolute",
+              top: -30,
+              left: 100,
+              transform: [
+                { translateX: 50 },
+                { translateY: 50 },
+                { rotate: "-5deg" },
+              ],
+            }}
+          />
+
+          <Image
+            source={require("../assets/hero3.jpg")}
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 20,
+              position: "absolute",
+              top: 130,
+              left: -50,
+              transform: [
+                { translateX: 50 },
+                { translateY: 50 },
+                { rotate: "15deg" },
+              ],
+            }}
+          />
+
+          <Image
+            source={require("../assets/hero2.jpg")}
+            style={{
+              height: 200,
+              width: 200,
+              borderRadius: 20,
+              position: "absolute",
+              top: 110,
+              left: 100,
+              transform: [
+                { translateX: 50 },
+                { translateY: 50 },
+                { rotate: "-15deg" },
+              ],
+            }}
+          />
+        </View>
+
             </View>
+           
         </SafeAreaView>
+        </LinearGradient>
     )
 }
 
