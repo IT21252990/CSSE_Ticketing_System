@@ -1,0 +1,30 @@
+.bus-details-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.bus-details-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.bus-info-line {
+    margin-bottom: 10px;
+}
+
+.bus-info-line label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.time-periods {
+    margin-top: 10px;
+}
+
+.time-periods label {
+    display: block;
+    margin-bottom: 5px;
+}
