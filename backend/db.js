@@ -1,4 +1,4 @@
-//use use the Singleton Pattern for databace creation
+//use the Singleton Pattern for databace creation
 const mongoose = require('mongoose');
 
 class Database {
