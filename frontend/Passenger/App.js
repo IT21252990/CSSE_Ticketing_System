@@ -3,12 +3,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Login, Signup, Welcome } from "./screens";
 import BottomTabNavigation from "./navigations/BottomTabNavigation";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import COLORS from './constants/colors'
+import COLORS from "./constants/colors";
 import Home from "./screens/Home";
 import Profile from "./screens/Profile";
 import NewJourney from "./screens/NewJourney";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
-
+import TicketDetails from './screens/TicketDetails'
+import QRDisplay from "./screens/QRDisplay";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,8 +29,10 @@ const screenOptions = {
   },
 };
 
-function StackNavigator(){
-  <Stack.Navigator initialRouteName="Welcome">
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen
           name="Welcome"
           component={Welcome}
@@ -51,25 +54,35 @@ function StackNavigator(){
             headerShown: false,
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="BottomTabNavigation"
           component={BottomTabNavigation}
           options={{
             headerShown: false,
           }}
         />
-        
-        
+        <Stack.Screen
+          name="NewJourney"
+          component={NewJourney}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="TicketDetails"
+          component={TicketDetails}
+          options={{
+            headerShown: false,
+          }}
+        />
+         <Stack.Screen
+          name="QRDisplay"
+          component={QRDisplay}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
-      
-}
-
-
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <StackNavigator/>
     </NavigationContainer>
   );
 }

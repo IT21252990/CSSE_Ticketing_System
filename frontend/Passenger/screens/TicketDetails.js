@@ -13,6 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Button from "../components/Button";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from "@expo/vector-icons";
+import QRDisplay from "./QRDisplay";
 
 const NewJourney = ({ navigation }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -38,7 +39,7 @@ const NewJourney = ({ navigation }) => {
                 marginTop: 2,
               }}
             >
-              Home
+              Journey Detals
             </Text>
             <MaterialIcons
               name="keyboard-arrow-left"
@@ -56,7 +57,7 @@ const NewJourney = ({ navigation }) => {
                 color: COLORS.black,
               }}
             >
-              Enter Your Trip Details
+              Ticket Info
             </Text>
 
             <View style={{ marginBottom: 10 }}>
@@ -67,7 +68,7 @@ const NewJourney = ({ navigation }) => {
                   marginVertical: 10,
                 }}
               >
-                Passenger Name :
+                Journey Start :
               </Text>
 
               <View
@@ -102,7 +103,7 @@ const NewJourney = ({ navigation }) => {
                   marginVertical: 10,
                 }}
               >
-                Token ID :
+                Journey End :
               </Text>
 
               <View
@@ -130,86 +131,129 @@ const NewJourney = ({ navigation }) => {
             </View>
 
             <View style={{ marginBottom: 10 }}>
-          <Text
-            style={{
-              fontSize: 16,
-              fontWeight: 400,
-              marginVertical: 10,
-            }}
-          >
-            From :
-          </Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 400,
+                  marginVertical: 10,
+                }}
+              >
+                Price Per Ticket :
+              </Text>
 
-          <View
-            style={{
-              width: "100%",
-              height: 40,
-              borderColor: COLORS.black,
-              borderWidth: 1,
-              borderRadius: 8,
-              alignItems: "center",
-              justifyContent: "center",
-              paddingLeft: 22,
-            }}
-          >
-            <TextInput
-              value="Katunayake"
-              placeholderTextColor={'#000000'}
-              keyboardType="email-address"
+              <View
+                style={{
+                  width: "100%",
+                  height: 40,
+                  borderColor: COLORS.black,
+                  borderWidth: 1,
+                  borderRadius: 8,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  paddingLeft: 22,
+                }}
+              >
+                <TextInput
+                  value="Katunayake"
+                  placeholderTextColor={"#000000"}
+                  keyboardType="email-address"
+                  style={{
+                    width: "100%",
+                  }}
+                  editable={false}
+                />
+              </View>
+            </View>
+
+            <View style={{ marginBottom: 10 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 400,
+                  marginVertical: 10,
+                }}
+              >
+                Ticket Quantity :
+              </Text>
+
+              <View
+                style={{
+                  width: "100%",
+                  height: 40,
+                  borderColor: COLORS.black,
+                  borderWidth: 1,
+                  borderRadius: 8,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  paddingLeft: 22,
+                }}
+              >
+                <TextInput
+                  placeholder="Enter your destination"
+                  placeholderTextColor={"#000000"}
+                  keyboardType="email-address"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              </View>
+            </View>
+
+            <View style={{ marginBottom: 10 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 400,
+                  marginVertical: 10,
+                }}
+              >
+                Total Price :
+              </Text>
+
+              <View
+                style={{
+                  width: "100%",
+                  height: 40,
+                  borderColor: COLORS.black,
+                  borderWidth: 1,
+                  borderRadius: 8,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  paddingLeft: 22,
+                }}
+              >
+                <TextInput
+                  placeholder="Enter your destination"
+                  placeholderTextColor={"#000000"}
+                  keyboardType="email-address"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              </View>
+            </View>
+
+            <Button
+              title="Edit Destination"
+              onPress={() => navigation.navigate("NewJourney")}
+              filled
               style={{
-                width: "100%",
+                marginTop: 18,
+                marginBottom: 4,
+                borderColor: COLORS.tertinary,
               }}
-              editable = {false}
             />
-          </View>
-        </View>
 
-        <View style={{ marginBottom: 10 }}>
-          <Text
-            style={{
-              fontSize: 16,
-              fontWeight: 400,
-              marginVertical: 10,
-            }}
-          >
-            To :
-          </Text>
-
-          <View
-            style={{
-              width: "100%",
-              height: 40,
-              borderColor: COLORS.black,
-              borderWidth: 1,
-              borderRadius: 8,
-              alignItems: "center",
-              justifyContent: "center",
-              paddingLeft: 22,
-            }}
-          >
-            <TextInput
-              placeholder="Enter your destination"
-              placeholderTextColor={'#000000'}
-              keyboardType="email-address"
+            <Button
+              title="Generate QR"
+              onPress={() => navigation.navigate("QRDisplay")}
+              filled
               style={{
-                width: "100%",
+                marginTop: 18,
+                marginBottom: 4,
+                borderColor: COLORS.tertinary,
               }}
             />
-          </View>
-        </View>
-
-        <Button
-          title="Next"
-          onPress={() => navigation.navigate("TicketDetails")}
-          filled
-          style={{
-            marginTop: 18,
-            marginBottom: 4,
-            borderColor:COLORS.tertinary
-          }}
-        />
-            
-
           </View>
         </View>
       </SafeAreaView>
