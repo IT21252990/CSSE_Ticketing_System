@@ -166,7 +166,7 @@ const Welcome = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 16,
-                  color: COLORS.white,
+                  color: '#0000ff',
                   fontWeight: "bold",
                   marginLeft: 4,
                 }}
