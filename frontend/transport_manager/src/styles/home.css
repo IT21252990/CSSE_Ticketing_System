@@ -1,0 +1,49 @@
+/* header.css */
+
+.header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 15px 0;
+  }
+  
+  .appname h2 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu li {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  
+  .menu li:first-child {
+    margin-left: 0;
+  }
+  
+  .menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .menu li a:hover {
+    border-bottom: 2px solid #eee4e4;
+  }
+  
+  /* Style for the logout option */
+  .menu li.logout-link a {
+    color: #e74c3c; /* Red color for logout */
+    border-bottom: none; /* Remove the underline on hover */
+  }
+  
+  .menu li.logout-link a:hover {
+    border-bottom: none; /* Remove the underline on hover */
+    color: #c0392b; /* Darker red color on hover */
+  }
+  

@@ -1,0 +1,45 @@
+.header {
+    background-color: #f8f9fa;
+    padding: 10px;
+  }
+  
+  .appname h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu .nav__item {
+    margin: 0 10px;
+  }
+  
+  .menu .nav__item a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .menu .nav__item a:hover {
+    color: #007BFF;
+  }
+  
+  .nav__btns {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn_logout a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .btn_logout a:hover {
+    text-decoration: underline;
+  }
+  
