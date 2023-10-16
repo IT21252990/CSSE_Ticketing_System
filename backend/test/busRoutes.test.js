@@ -99,3 +99,6 @@ describe('Bus API Routes', () => {
     });
   });
 });
+const app = require('../server'); 
+
+chai.use(chaiHttp);

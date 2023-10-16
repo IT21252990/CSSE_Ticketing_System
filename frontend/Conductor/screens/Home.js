@@ -27,8 +27,10 @@ const Home = ({ navigation }) => {
             Welcome username
           </Text>
 
+          
+
           <Button
-            title="HISTORY"
+            title="SCAN"
             onPress={() => navigation.navigate("Home")}
             filled
             style={{
@@ -38,16 +40,7 @@ const Home = ({ navigation }) => {
               borderColor: COLORS.tertinary,
             }} />
 
-          <Button
-            title="TIME TABLES"
-            onPress={() => navigation.navigate("Home")}
-            filled
-            style={{
-              height: 100,
-              marginTop: 18,
-              marginBottom: 4,
-              borderColor: COLORS.tertinary,
-            }} />
+          
         </View>
       </LinearGradient></>
   );

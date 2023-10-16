@@ -106,4 +106,28 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.post('/conductor/login', async (req, res) => {
+    try {
+      const { username, password } = req.body;
+  
+      // Find the conductor by username
+      const conductor = await Bus.findOne({ conductor_username: username  , conductor_password: password});
+  
+      if (conductor) {
+        
+        
+          res.json({
+            
+            username: conductor.conductor_username,
+            
+          });
+        
+      } else {
+        res.status(401).send('Conductor not found');
+      }
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
+
 module.exports = router;

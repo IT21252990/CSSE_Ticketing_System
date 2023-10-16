@@ -2,22 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Bus = require('../models/busModel');
 
-router.get('/statistics', async (req, res) => {
-    try {
-        const totalBuses = await Bus.countDocuments();
-        
-        const buses = await Bus.find();
-        let totalPeriods = 0;
-        buses.forEach(bus => {
-            totalPeriods += bus.timePeriods.length;
-        });
-        const averageTimePeriods = totalPeriods / totalBuses;
-
-        res.status(200).json({ totalBuses, averageTimePeriods });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
 
 // Route to add a new bus
 router.post('/add', async (req, res) => {
