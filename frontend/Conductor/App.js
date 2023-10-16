@@ -47,13 +47,7 @@ export default function App() {
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="Signup"
-          component={Signup}
-          options={{
-            headerShown: false,
-          }}
-        />
+        
         <Stack.Screen
           name="BottomTabNavigation"
           component={BottomTabNavigation}

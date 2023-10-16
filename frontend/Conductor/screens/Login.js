@@ -10,64 +10,42 @@ import Home from './Home'
 
 
 
-
-
 const Login = ({ navigation }) => {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
 
-    const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailPattern.test(email)) {
-    Alert.alert(
-        "Please enter a valid email address"
-      );
-    return;
-  }
-
-  if (!password || password.length < 6) {
-    Alert.alert(
-        "Password must be at least 6 characters long."
-      );
-    return;
-  }
-
+  const handleConductorLogin = async () => {
     try {
-      const response = await fetch("http://localhost:4000/auth/login", {
-        method: "POST",
+      const response = await fetch('http://localhost:4000/auth/conductor/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email,
+          username,
           password,
         }),
       });
 
       if (response.ok) {
-        
-        const userData = await response.json();
-        localStorage.setItem("userInfo", JSON.stringify(userData));
+        const conductorData = await response.json();
+        localStorage.setItem("conductorInfo", JSON.stringify(conductorData));
         Alert.alert(
             "Login successful"
           );
-        navigation.navigate(Home);
+        navigation.navigate(BottomTabNavigation);
+        // Perform actions after successful login (e.g., navigation or storing data)
       } else {
-        Alert.alert(
-            "Invalid credentials"
-          );
+        Alert.alert('Invalid credentials');
       }
     } catch (error) {
-      console.error("Error:", error);
-      Alert.alert(
-        "An error occurred"
-      );
+      console.error('Error:', error);
+      Alert.alert('An error occurred');
     }
   };
+
 
     
     return (
@@ -101,7 +79,7 @@ const Login = ({ navigation }) => {
                         fontSize: 16,
                         fontWeight: 400,
                         marginVertical: 8
-                    }}>Email address</Text>
+                    }}>User Name</Text>
 
                     <View style={{
                         width: "100%",
@@ -114,13 +92,13 @@ const Login = ({ navigation }) => {
                         paddingLeft: 22
                     }}>
                         <TextInput
-                            placeholder='Enter your email address'
-                            placeholderTextColor={COLORS.black}
-                            keyboardType='email-address'
-                            style={{
-                                width: "100%"
-                            }}
-                        />
+                placeholder='Enter your user name'
+                placeholderTextColor={COLORS.black}
+                keyboardType='username'
+                style={{ width: '100%' }}
+                value={username}
+                onChangeText={(text) => setUsername(text)}
+              />
                     </View>
                 </View>
 
@@ -142,13 +120,13 @@ const Login = ({ navigation }) => {
                         paddingLeft: 22
                     }}>
                         <TextInput
-                            placeholder='Enter your password'
-                            placeholderTextColor={COLORS.black}
-                            secureTextEntry={isPasswordShown}
-                            style={{
-                                width: "100%"
-                            }}
-                        />
+                placeholder='Enter your password'
+                placeholderTextColor={COLORS.black}
+                secureTextEntry={isPasswordShown}
+                style={{ width: '100%' }}
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+              />
 
                         <TouchableOpacity
                             onPress={() => setIsPasswordShown(!isPasswordShown)}
@@ -173,7 +151,7 @@ const Login = ({ navigation }) => {
 
                 <Button
                     title="Login"
-                    onPress={() => navigation.navigate("BottomTabNavigation")}
+                    onPress={handleConductorLogin}
                     filled
                     style={{
                         marginTop: 18,
