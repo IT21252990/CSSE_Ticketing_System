@@ -92,7 +92,7 @@ router.put('/:id', async (req, res) => {
         bus.end_route = end_route;
         bus.driver = driver;
         bus.conductor = conductor;
-        bus.timePeriods = timePeriods;
+        bus.timePeriods = timePeriods;a
 
         // Save the updated bus
         await bus.save();
@@ -103,21 +103,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.get('/statistics', async (req, res) => {
-    try {
-        const totalBuses = await Bus.countDocuments();
-        
-        const buses = await Bus.find();
-        let totalPeriods = 0;
-        buses.forEach(bus => {
-            totalPeriods += bus.timePeriods.length;
-        });
-        const averageTimePeriods = totalPeriods / totalBuses;
 
-        res.status(200).json({ totalBuses, averageTimePeriods });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
 
 module.exports = router;
