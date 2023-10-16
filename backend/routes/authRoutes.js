@@ -17,6 +17,19 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+router.post('/passengersignup', async (req, res) => {
+    try {
+        const { firstName , lastName , email, Phone , password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const user = new Passenger({ firstName , lastName , email,Phone, password: hashedPassword });
+        await user.save();
+        res.status(200).send('User created successfully');
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
+
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -63,6 +76,7 @@ router.post('/passengerlogin', async (req, res) => {
                 res.json({
                     _id: user._id,
                     firstName:user.firstName,
+                    lastName:user.lastName,
                     email: user.email,
                     phone:user.phone
                   });

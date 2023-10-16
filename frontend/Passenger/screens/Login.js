@@ -23,6 +23,7 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
+    e.preventDefault();
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailPattern.test(email)) {
@@ -50,7 +51,7 @@ const Login = ({ navigation }) => {
       if (response.ok) {
         const userData = await response.json();
         Alert.alert("Login successful");
-        // navigation.navigate('BottomTabNavigation');
+        navigation.navigate("BottomTabNavigation");
       } else {
         Alert.alert("Invalid credentials");
       }
