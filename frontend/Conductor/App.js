@@ -46,6 +46,7 @@ export default function App() {
             headerShown: false,
           }}
         />
+        
         <Stack.Screen
           name="BottomTabNavigation"
           component={BottomTabNavigation}

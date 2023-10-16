@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel'); 
 const Passenger = require('../models/passengerModel');
+const Bus = require('../models/busModel')
 const bcrypt = require('bcrypt');
 
 router.post('/signup', async (req, res) => {
@@ -89,7 +90,7 @@ router.post('/passengerlogin', async (req, res) => {
         }
         console.log('hiii')
     } catch (error) {
-        res.status(400).send(error.message);
+      res.status(400).send(error.message);
     }
 });
 
