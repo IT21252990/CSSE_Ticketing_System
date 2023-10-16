@@ -30,8 +30,8 @@ const Home = ({ navigation }) => {
           
 
           <Button
-            title="SCAN"
-            onPress={() => navigation.navigate("Home")}
+            title="HISTORY"
+            onPress={() => navigation.navigate("QRScanner")}
             filled
             style={{
               height: 100,
@@ -39,8 +39,6 @@ const Home = ({ navigation }) => {
               marginBottom: 4,
               borderColor: COLORS.tertinary,
             }} />
-
-          
         </View>
       </LinearGradient></>
   );
