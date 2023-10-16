@@ -22,7 +22,7 @@ router.get('/statistics', async (req, res) => {
 // Route to add a new bus
 router.post('/add', async (req, res) => {
     try {
-        const { busNo, start_route , end_route, driver, conductor, timePeriods } = req.body;
+        const { busNo, start_route , end_route, driver, conductor , conductor_username , conductor_password, timePeriods } = req.body;
 
         const bus = new Bus({
             busNo,
@@ -30,7 +30,11 @@ router.post('/add', async (req, res) => {
             end_route,
             driver,
             conductor,
+            conductor_username,
+            conductor_password,
             timePeriods,
+            
+
         });
 
         await bus.save();

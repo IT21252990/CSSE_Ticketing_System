@@ -12,6 +12,8 @@ const AddNewBus = () => {
         end_route: '',
         driver: '',
         conductor: '',
+        conductor_username: '',
+        conductor_password: '',
     });
 
     const [timePeriods, setTimePeriods] = useState([]);
@@ -35,7 +37,9 @@ const AddNewBus = () => {
             !busInfo.start_route ||
             !busInfo.end_route ||
             !busInfo.driver ||
-            !busInfo.conductor
+            !busInfo.conductor||
+            !busInfo.conductor_password||
+            !busInfo.conductor_username
         ) {
             toast.error('Please fill in all bus information fields.');
             return;
@@ -113,6 +117,24 @@ const AddNewBus = () => {
                         placeholder="Conductor"
                         value={busInfo.conductor}
                         onChange={(e) => handleBusInfoChange('conductor', e.target.value)}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Conductor UserName:</label>
+                    <input
+                        type="text"
+                        placeholder="Conductor user name"
+                        value={busInfo.conductor_username}
+                        onChange={(e) => handleBusInfoChange('conductor_username', e.target.value)}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Conductor Password:</label>
+                    <input
+                        type="text"
+                        placeholder="Conductor password"
+                        value={busInfo.conductor_password}
+                        onChange={(e) => handleBusInfoChange('conductor_password', e.target.value)}
                     />
                 </div>
             </div>

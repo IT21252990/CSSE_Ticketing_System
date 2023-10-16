@@ -21,6 +21,14 @@ const busSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    conductor_username: {
+        type: String,
+        required: true,
+    },
+    conductor_password: {
+        type: String,
+        required: true,
+    },
     timePeriods: [{
         type: String,
         required: true,
