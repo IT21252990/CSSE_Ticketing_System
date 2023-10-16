@@ -41,6 +41,7 @@ import {
             size={250}
             color="black"
             backgroundColor="white"
+            // testID="qr-code" 
           />
           
           <TextInput
