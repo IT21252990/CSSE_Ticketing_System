@@ -5,61 +5,106 @@ import {
     Pressable,
     TextInput,
     TouchableOpacity,
+    
+    StyleSheet,
   } from "react-native";
-  import React, { useState } from "react";
+  import React, { useState  , useEffect} from "react";
   import { SafeAreaView } from "react-native-safe-area-context";
   import COLORS from "../constants/colors";
   import { Ionicons } from "@expo/vector-icons";
   import Button from "../components/Button";
   import { LinearGradient } from "expo-linear-gradient";
   import { MaterialIcons } from "@expo/vector-icons";
+  import QRCode from 'react-native-qrcode-svg';
+
   
   const QRDisplay = ({ navigation }) => {
-    const [isPasswordShown, setIsPasswordShown] = useState(false);
-    const [isChecked, setIsChecked] = useState(false);
+    const [inputText, setInputText] = useState('');
+  const [qrvalue, setQrvalue] = useState('');
     return (
       <LinearGradient
-        style={{
-          flex: 1,
-        }}
-        colors={[COLORS.primary, COLORS.tertinary]}
-      >
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-          <View style={{ flex: 1, marginHorizontal: 22 }}>
+      style={{
+        flex: 1,
+      }}
+      colors={[COLORS.primary, COLORS.tertinary]}
+    >
+      <SafeAreaView style={{flex: 1}}>
+        <View style={styles.container}>
+        <Text style={styles.titleStyle}>
+            Your Journey Ticket
+          </Text>
+          <Text style={styles.titleStyle}>
+            Please Waiting for Conductor 
+          </Text>
+          <QRCode
+            value={qrvalue ? qrvalue : 'NA'}
+            size={250}
+            color="black"
+            backgroundColor="white"
+          />
+          
+          <TextInput
+            style={styles.textInputStyle}
+            onChangeText={
+              (inputText) => setInputText(inputText)
+            }
+            value={inputText}
+          />
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={{ marginLeft: 5, marginTop: 10 }}
-          >
-            <Text
-              style={{
-                fontSize: 18,
-                position: "absolute",
-                marginLeft: 20,
-                marginTop: 2,
-              }}
-            >
-              Ticket Details
+            style={styles.buttonStyle}
+            onPress={() => setQrvalue(inputText)}>
+            <Text style={styles.buttonTextStyle}>
+              Generate QR Code
             </Text>
-            <MaterialIcons
-              name="keyboard-arrow-left"
-              size={24}
-              color={COLORS.black}
-            />
           </TouchableOpacity>
-          <Text
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 400,
-                    marginVertical: 10,
-                  }}
-                >
-                  QR Display Page
-                </Text>
-          </View>
-        </SafeAreaView>
+        </View>
+      </SafeAreaView>
       </LinearGradient>
     );
   };
   
   export default QRDisplay;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    padding: 10,
+  },
+  titleStyle: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    marginBottom:20
+  },
+  textStyle: {
+    textAlign: 'center',
+    margin: 10,
+  },
+  textInputStyle: {
+    flexDirection: 'row',
+    height: 40,
+    marginTop: 20,
+    marginLeft: 35,
+    marginRight: 35,
+    margin: 10,
+  },
+  buttonStyle: {
+    backgroundColor: '#51D8C7',
+    borderWidth: 0,
+    color: '#FFFFFF',
+    borderColor: '#51D8C7',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginTop: 30,
+    padding: 10,
+  },
+  buttonTextStyle: {
+    color: '#FFFFFF',
+    paddingVertical: 10,
+    fontSize: 16,
+  },
+});
   

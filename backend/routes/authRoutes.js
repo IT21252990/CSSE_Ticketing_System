@@ -93,4 +93,16 @@ router.post('/passengerlogin', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const passenger = await Passenger.findById(req.params.id);
+        if (!passenger) {
+            return res.status(404).json({ message: 'Passenger not found' });
+        }
+        res.status(200).json(passenger);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 module.exports = router;

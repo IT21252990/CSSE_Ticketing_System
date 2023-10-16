@@ -15,6 +15,8 @@ import Button from "../components/Button";
 import { LinearGradient } from "expo-linear-gradient";
 import BottomTabNavigation from "../navigations/BottomTabNavigation";
 import Home from "./Home";
+import  AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const Login = ({ navigation }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -37,7 +39,7 @@ const Login = ({ navigation }) => {
     }
 
     try {
-      const response = await fetch("http://172.28.7.172:4000/auth/passengerlogin", {
+      const response = await fetch("http://192.168.86.72:4000/auth/passengerlogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +51,8 @@ const Login = ({ navigation }) => {
       });
 
       if (response.ok) {
-        const userData = await response.json();
+        const passengerData = await response.json();
+        AsyncStorage.setItem("passengerInfo", JSON.stringify(passengerData));
         Alert.alert("Login successful");
         navigation.navigate("BottomTabNavigation");
       } else {
@@ -181,6 +184,7 @@ const Login = ({ navigation }) => {
           <Button
             title="Login"
             onPress={handleLogin}
+            // onPress={navigation.navigate("BottomTabNavigation")}
             filled
             style={{
               marginTop: 18,

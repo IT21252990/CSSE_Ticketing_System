@@ -162,7 +162,10 @@ const Welcome = ({ navigation }) => {
             >
               Already have an account ?
             </Text>
-            <Pressable onPress={() => navigation.navigate("Login")}>
+            <Pressable 
+            // onPress={() => navigation.navigate("Login")}
+            onPress={() => navigation.navigate("Login")}
+            >
               <Text
                 style={{
                   fontSize: 16,

@@ -61,7 +61,7 @@ const Signup = ({ navigation }) => {
     
 
     try {
-      const response = await fetch("http://172.28.7.172:4000/auth/passengersignup", {
+      const response = await fetch("http://192.168.86.72:4000/auth/passengersignup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -54,6 +54,17 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Fetch the bus routes from the database
+router.get('/bus-routes', async (req, res) => {
+    try {
+      const routes = await Bus.find({}, 'start_route end_route');
+      res.json(routes);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
 router.get('/:id', async (req, res) => {
     try {
         const bus = await Bus.findById(req.params.id);
