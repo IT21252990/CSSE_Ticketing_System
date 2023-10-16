@@ -30,7 +30,7 @@ const Home = ({ navigation }) => {
           
 
           <Button
-            title="HISTORY"
+            title="QR Scanner"
             onPress={() => navigation.navigate("QRScanner")}
             filled
             style={{

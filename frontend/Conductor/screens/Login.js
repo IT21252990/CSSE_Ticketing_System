@@ -18,7 +18,7 @@ const Login = ({ navigation }) => {
 
   const handleConductorLogin = async () => {
     try {
-      const response = await fetch('http://localhost:4000/auth/conductor/login', {
+      const response = await fetch('http://192.168.86.72:4000/auth/conductor/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
 
       if (response.ok) {
         const conductorData = await response.json();
-        localStorage.setItem("conductorInfo", JSON.stringify(conductorData));
+        // localStorage.setItem("conductorInfo", JSON.stringify(conductorData));
         Alert.alert(
             "Login successful"
           );

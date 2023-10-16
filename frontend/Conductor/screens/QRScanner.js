@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import Button from "../components/Button";
+import COLORS from "../constants/colors";
 
-export default function QRScanner() {
+
+
+export default function QRScanner({navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState('Not yet scanned')
@@ -49,10 +53,33 @@ export default function QRScanner() {
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={{ height: 400, width: 400 }} />
       </View>
-      <Text style={styles.maintext}>{text}</Text>
+      {/* <Text style={styles.maintext}>{text}</Text> */}
 
-      {scanned && <Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' />}
+      {scanned && (<><Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' style={{
+          height: 70,
+          width: 200,
+          marginTop: 30,
+          marginBottom: 4,
+          backgroundColor: COLORS.primary,
+        }}/><Button
+        title="DONE"
+        onPress={() => navigation.navigate("QRScannedDetails")}
+        filled
+        style={{
+          height: 50,
+          width: 100,
+          marginTop: 30,
+          marginBottom: 4,
+          backgroundColor: COLORS.lightOrange,
+        }} /></>
+      
+      )}
+
+      
+
     </View>
+
+    
   );
 }
 

@@ -8,6 +8,8 @@ import Home from "./screens/Home";
 import Profile from "./screens/Profile";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import QRScanner from "./screens/QRScanner";
+import QRScannedDetails from './screens/QRScannedDetails'
+import eTicketDisplay from './screens/eTicketDisplay'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -56,6 +58,20 @@ export default function App() {
          <Stack.Screen
           name="QRScanner"
           component={QRScanner}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="QRScannedDetails"
+          component={QRScannedDetails}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="eTicketDisplay"
+          component={eTicketDisplay}
           options={{
             headerShown: false,
           }}

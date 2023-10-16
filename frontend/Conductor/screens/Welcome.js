@@ -137,7 +137,7 @@ const Welcome = ({ navigation }) => {
 
           <Button
             title="LOGIN"
-            onPress={() => navigation.navigate("QRScanner")}
+            onPress={() => navigation.navigate("Login")}
             style={{
               marginTop: 22,
               width: "100%",
