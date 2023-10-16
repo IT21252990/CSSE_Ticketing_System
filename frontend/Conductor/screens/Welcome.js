@@ -136,8 +136,8 @@ const Welcome = ({ navigation }) => {
           </View>
 
           <Button
-            title="JOIN NOW"
-            onPress={() => navigation.navigate("Signup")}
+            title="LOGIN"
+            onPress={() => navigation.navigate("Login")}
             style={{
               marginTop: 22,
               width: "100%",
@@ -146,35 +146,6 @@ const Welcome = ({ navigation }) => {
               color:COLORS.darkGray,
             }}
           />
-
-          <View
-            style={{
-              flexDirection: "row",
-              marginTop: 12,
-              justifyContent: "center",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 16,
-                color: COLORS.white,
-              }}
-            >
-              Already have an account ?
-            </Text>
-            <Pressable onPress={() => navigation.navigate("Login")}>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: '#0000ff',
-                  fontWeight: "bold",
-                  marginLeft: 4,
-                }}
-              >
-                Login
-              </Text>
-            </Pressable>
-          </View>
         </View>
       </View>
     </LinearGradient>

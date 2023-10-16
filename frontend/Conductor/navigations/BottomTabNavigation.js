@@ -3,7 +3,6 @@ import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import  COLORS  from '../constants/colors';
 import  Home  from "../screens/Home";
 import Profile from '../screens/Profile'
-import NewJourney from "../screens/NewJourney";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 

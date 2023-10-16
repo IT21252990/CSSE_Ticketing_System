@@ -3,7 +3,6 @@ import React from "react";
 import COLORS from "../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "../components/Button";
-import NewJourney from './NewJourney'
 
 const Home = ({ navigation }) => {
   return (
@@ -27,17 +26,6 @@ const Home = ({ navigation }) => {
           >
             Welcome username
           </Text>
-
-          <Button
-            title="NEW JOURNEY"
-            onPress={() => navigation.navigate("NewJourney")}
-            filled
-            style={{
-              height: 100,
-              marginTop: 150,
-              marginBottom: 4,
-              borderColor: COLORS.tertinary,
-            }} />
 
           <Button
             title="HISTORY"

@@ -48,55 +48,28 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// pasenger routes
-router.post('/passengersignup', async (req, res) => {
-    try {
-        const { firstName, lastName, email, Phone, password } = req.body;
-
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Create a new user
-        const user = new Passenger({
-            firstName,
-            lastName,
-            email,
-            Phone,
-            password: hashedPassword
-        });
-
-        // Save the user to the database
-        await user.save();
-        res.status(200).send('User created successfully');
-    } catch (error) {
-        res.status(400).send(error.message);
-    }
-});
-
-router.post('/loginpassenger', async (req, res) => {
+router.post('/passengerlogin', async (req, res) => {
     try {
         const { email, password } = req.body;
 
         
-        const Passenger = await User.findOne({ email });
+        const user = await Passenger.findOne({ email });
 
-        if (Passenger) {
+        if (user) {
             
-            const isPasswordValid = await bcrypt.compare(password, Passenger.password);
+            const isPasswordValid = await bcrypt.compare(password, user.password);
 
             if (isPasswordValid) {
                 res.json({
-                    _id: Passenger._id,
-                    firstName:Passenger.firstName,
-                    lastName:Passenger.lastName,
-                    email: Passenger.email,
-                    Phone:Passenger.Phone,
-                    password:Passenger.password
+                    _id: user._id,
+                    firstName:user.firstName,
+                    email: user.email,
+                    phone:user.phone
                   });
             } else {
                 res.status(401).send('Invalid password');
                 console.log('hello')
-            }npm 
+            }
         } else {
             res.status(401).send('Invalid credentials');
         }
@@ -105,6 +78,5 @@ router.post('/loginpassenger', async (req, res) => {
         res.status(400).send(error.message);
     }
 });
-
 
 module.exports = router;

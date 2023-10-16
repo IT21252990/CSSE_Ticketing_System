@@ -1,12 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Login, Signup, Welcome } from "./screens";
+import { Login, Welcome } from "./screens";
 import BottomTabNavigation from "./navigations/BottomTabNavigation";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import COLORS from "./constants/colors";
 import Home from "./screens/Home";
 import Profile from "./screens/Profile";
-import NewJourney from "./screens/NewJourney";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import TicketDetails from './screens/TicketDetails'
 import QRDisplay from "./screens/QRDisplay";
@@ -48,22 +47,8 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          name="Signup"
-          component={Signup}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
           name="BottomTabNavigation"
           component={BottomTabNavigation}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="NewJourney"
-          component={NewJourney}
           options={{
             headerShown: false,
           }}

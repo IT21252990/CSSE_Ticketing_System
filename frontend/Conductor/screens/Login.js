@@ -181,24 +181,6 @@ const Login = ({ navigation }) => {
                         borderColor:COLORS.tertinary
                     }}
                 />
-                <View style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    marginVertical: 22
-                }}>
-                    <Text style={{ fontSize: 16, color: COLORS.black }}>Don't have an account ? </Text>
-                    <Pressable
-                        onPress={() => navigation.navigate("Signup")}
-                    >
-                        <Text style={{
-                            fontSize: 16,
-                            color: '#0000ff',
-                            fontWeight: "bold",
-                            marginLeft: 6
-                        }}>Register</Text>
-                    </Pressable>
-                </View>
-
                 <View>
           <Image
             source={require("../assets/hero1.jpg")}
