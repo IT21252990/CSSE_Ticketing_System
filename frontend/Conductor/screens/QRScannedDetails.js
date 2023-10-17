@@ -242,7 +242,7 @@ const NewJourney = ({ navigation }) => {
             <Button
               title="Generate E Ticket"
               onPress={() => navigation.navigate("eTicketDisplay", {
-                userId:"0000",
+                userId:"652cd67e91bbf39b53498639",
                 startLocation: "Kandy",
                 endLocation: "Panadura",
                 pricePerTicket: "LKR. 520.00",

@@ -1,38 +1,35 @@
 const express = require('express');
 const router = express.Router();
-const Bus = require('../models/busModel');
+const Ticket = require('../models/ticketModel');
 
 
-// Route to add a new bus
+// Route to add a new ticket
 router.post('/add', async (req, res) => {
     try {
-        const { busNo, start_route , end_route, driver, conductor , conductor_username , conductor_password, timePeriods } = req.body;
+        const { userId, startLocation, endLocation, pricePerTicket, ticketQuantity, totalPrice } = req.body;
 
-        const bus = new Bus({
-            busNo,
-            start_route,
-            end_route,
-            driver,
-            conductor,
-            conductor_username,
-            conductor_password,
-            timePeriods,
-            
+        const ticket = new Ticket({
+            userId, 
+            startLocation, 
+            endLocation, 
+            pricePerTicket, 
+            ticketQuantity, 
+            totalPrice
 
         });
 
-        await bus.save();
-        res.status(200).json({ message: 'Bus added successfully', bus });
+        await ticket.save();
+        res.status(200).json({ message:'ticket added successfully', ticket });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 });
 
-// Route to get all buses
+// Route to get all tickets
 router.get('/', async (req, res) => {
     try {
-        const buses = await Bus.find();
-        res.status(200).json(buses);
+        const tickets = await Ticket.find();
+        res.status(200).json(tickets);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -42,11 +39,11 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const bus = await Bus.findById(req.params.id);
-        if (!bus) {
-            return res.status(404).json({ message: 'Bus not found' });
+        const ticket = await Ticket.findById(req.params.id);
+        if (!ticket) {
+            return res.status(404).json({ message: 'Ticket not found' });
         }
-        res.status(200).json(bus);
+        res.status(200).json(ticket);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

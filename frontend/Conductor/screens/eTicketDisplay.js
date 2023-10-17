@@ -5,7 +5,7 @@ import {
   Pressable,
   TextInput,
   TouchableOpacity,
-
+  Alert,
   StyleSheet,
 } from "react-native";
 import React, { useState, useEffect } from "react";
@@ -33,6 +33,41 @@ const QRDisplay = ({ navigation }) => {
     ticketQuantity,
     totalPrice
   } = route.params;
+
+  const handleCreateTicket = async (e) => {
+    try {
+      const response = await fetch("http://192.168.38.186:4000/ticket/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId,
+          startLocation,
+          endLocation,
+          pricePerTicket,
+          ticketQuantity,
+          totalPrice
+        }),
+      });
+
+      if (response.ok) {
+        Alert.alert(
+          "Ticket sent successfully"
+        );
+      } else {
+        console.log(response);
+        Alert.alert(
+          "Failed to send ticket"
+        );
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      Alert.alert(
+        "An error occurred"
+      );
+    }
+  };
 
 
   return (
@@ -69,7 +104,17 @@ const QRDisplay = ({ navigation }) => {
 
           <TouchableOpacity
             style={styles.buttonStyle}
-            onPress={() => setQrvalue(`UserId: ${userId}\nStart Location: ${startLocation}\nEnd Location: ${endLocation}\nPrice Per Ticket: ${pricePerTicket}\nTicket Quantity: ${ticketQuantity}\nTotal Price: ${totalPrice}`)}>
+            onPress={() => {
+              const ticketInfo = `UserId: ${userId}\n
+                                  Start Location: ${startLocation}\n
+                                  End Location: ${endLocation}\n
+                                  Price Per Ticket: ${pricePerTicket}\n
+                                  Ticket Quantity: ${ticketQuantity}\n
+                                  Total Price: ${totalPrice}`;
+              setQrvalue(ticketInfo);
+              handleCreateTicket();
+            }}
+          >
             <Text style={styles.buttonTextStyle}>
               SEND
             </Text>

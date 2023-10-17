@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-const ticketSchema = new mongoose.Schema({
+const Schema = mongoose.Schema
+
+const ticketSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
-        ref: 'user',
+        ref: 'Passenger',
         required: true,
     },
     startLocation: {

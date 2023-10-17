@@ -3,6 +3,7 @@ const cors = require("cors")
 const dotenv= require('dotenv').config()
 const authRouts = require('./routes/authRoutes')
 const busRouts = require('./routes/busRouts')
+const ticketRouts = require('./routes/ticketRoutes')
 
 // Use the singleton database instance
 const database = require('./db'); 
@@ -22,6 +23,7 @@ app.use(cors())
 //routes
 app.use('/auth', authRouts);
 app.use('/Bus' , busRouts)
+app.use('/ticket', ticketRouts);
 
 app.listen(port , ()=>{
     console.log('server listning on port ' , port)
