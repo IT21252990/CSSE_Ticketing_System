@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Bus = require('../models/busModel');
+const Routes = require('../models/busrouteModel');
 
 
 // Route to add a new bus
@@ -78,7 +79,7 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const { busNo, start_route,end_route, driver, conductor, timePeriods } = req.body;
+        const { busNo, start_route,end_route, driver, conductor,  conductor_username,conductor_password , timePeriods } = req.body;
 
         // Find the bus by ID
         const bus = await Bus.findById(req.params.id);
@@ -92,7 +93,9 @@ router.put('/:id', async (req, res) => {
         bus.end_route = end_route;
         bus.driver = driver;
         bus.conductor = conductor;
-        bus.timePeriods = timePeriods;a
+        bus.conductor_username = conductor_username;
+        bus.conductor_password = conductor_password;
+        bus.timePeriods = timePeriods;
 
         // Save the updated bus
         await bus.save();
@@ -100,6 +103,25 @@ router.put('/:id', async (req, res) => {
         res.status(200).json({ message: 'Bus updated successfully', bus });
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+});
+
+//bus route
+
+router.post('/add-route', async (req, res) => {
+    try {
+        const { start_point, end_point, price } = req.body;
+
+        const route = new Routes({  // Use the correct model name here
+            start_point,
+            end_point,
+            price
+        });
+
+        await route.save();
+        res.status(200).json({ message: 'Route added successfully', route });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 });
 

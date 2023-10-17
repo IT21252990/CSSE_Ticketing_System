@@ -1,87 +1,121 @@
 /* busTimetable.css */
 
 .bus-timetable-container {
-    max-width: 800px;
-    margin-top: 60px;
-    margin-left: 260px;
+    max-width: 1000px;
+    margin: 60px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-}
-
-.bus-timetable-heading {
+  }
+  
+  .bus-timetable-heading {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
-}
-
-.search-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-}
-
-.search-input {
+    text-align: center;
+  }
+  
+  .search-container select {
     padding: 10px;
-    width: 200px;
+    width: 10%;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-}
-
-.bus-table {
+    font-size: 14px;
+    margin-left: 10px;
+    height: 40px; /* Adjust the height to match the search input */
+  }
+  
+  .search-input {
+    padding: 10px;
+    width: 40%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .search-input::placeholder {
+    color: #aaa;
+  }
+  
+  .bus-table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.table-heading {
+    margin-top: 20px;
+  }
+  
+  .table-heading {
     padding: 15px 10px;
     text-align: left;
     border-bottom: 2px solid #ccc;
     font-weight: bold;
     color: #333;
-}
-
-.bus-table tbody tr {
+    text-transform: uppercase;
+  }
+  
+  .bus-table tbody tr {
     border-bottom: 1px solid #ccc;
-}
-
-.bus-table tbody tr:last-child {
+  }
+  
+  .bus-table tbody tr:last-child {
     border-bottom: none;
-}
-
-.bus-table td {
+  }
+  
+  .bus-table td {
     padding: 15px 10px;
-}
-
-.action-button {
+    font-size: 16px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .action-button {
     padding: 8px 15px;
-    margin-right: 5px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
-}
-
-.delete {
+    transition: background-color 0.3s;
+  }
+  
+  .action-button.delete {
     background-color: #e74c3c;
     color: #fff;
-}
-
-.update {
+  }
+  
+  .action-button.update {
     background-color: #3498db;
     color: #fff;
-}
-
-.view {
+  }
+  
+  .action-button.view {
     background-color: #2ecc71;
     color: #fff;
-}
-
-.action-button:hover {
+  }
+  
+  .action-button:hover {
     opacity: 0.8;
-}
+  }
+  
+  .action-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  /* Styles for the search filter dropdown */
+  .search-container select {
+    padding: 10px;
+    width: 10%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    margin-left: 490px;
+  }
+  

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/signup.css'
-import { useNavigate } from "react-router-dom";
+import {NavLink,useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 
 

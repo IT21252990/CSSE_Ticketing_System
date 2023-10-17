@@ -5,9 +5,10 @@ import Login from '../pages/login'
 import Signup from '../pages/signUp'
 import AddNewBus from '../pages/addNewBus'
 import BusTimetable from '../pages/busTimetable'
-import Profile from '../pages/profile'
+import Price from '../pages/routeprice'
 import UpdateBus from '../pages/updateBus'
 import BusDetails from '../pages/busDetails'
+
 
 const Routers = () =>{
     return(
@@ -23,7 +24,7 @@ const Routers = () =>{
             <Route path='/update/:id' element={<UpdateBus/>}/>
             <Route path='/view/:id' element={<BusDetails/>}/>
 
-            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/price' element={<Price/>}/>
                         
         </Routes>
     )

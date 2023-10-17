@@ -1,42 +1,101 @@
+body {
+  background-color: #f0f0f0;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .sign-up-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .sign-up-container h2 {
-    margin-bottom: 20px;
-  }
-  
-  .sign-up-container form div {
-    margin-bottom: 10px;
-  }
-  
-  .sign-up-container form label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .sign-up-container form input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .sign-up-container form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .sign-up-container form button:hover {
-    background-color: #0056b3;
-  }
-  
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+/* Style for the input fields */
+input {
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Style for the error messages using toast library */
+.toast-error {
+  background-color: #e74c3c;
+}
+
+.toast-success {
+  background-color: #2ecc71;
+}
+
+.toast {
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+/* Style for the error message under the input fields */
+.error-message {
+  font-size: 14px;
+  color: #e74c3c;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Style for the button */
+button {
+  padding: 14px 24px;
+  background-color: #3498db;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px; /* Increased margin for a more spacious look */
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Style for the "Already have an account?" link */
+.signUPcreateInfo {
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 0; /* Removed the margin to reduce space between button and link */
+}
+
+.signUPcreateInfo span {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.signUPcreateInfo span:hover {
+  color: #2980b9;
+}

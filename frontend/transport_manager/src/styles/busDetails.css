@@ -1,30 +1,61 @@
-.bus-details-container {
-    max-width: 400px;
+/* busDetails.css */
+
+.page-title {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .bus-details-container {
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.bus-details-heading {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.bus-info-line {
-    margin-bottom: 10px;
-}
-
-.bus-info-line label {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.time-periods {
-    margin-top: 10px;
-}
-
-.time-periods label {
-    display: block;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  .info-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .info-item label {
     margin-bottom: 5px;
-}
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .info-item span {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .time-periods-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .time-periods-table th,
+  .time-periods-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .time-periods-table th {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .time-periods-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  

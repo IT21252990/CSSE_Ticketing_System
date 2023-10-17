@@ -15,6 +15,8 @@ const UpdateBus = () => {
     end_route: bus.end_route,
     driver: bus.driver,
     conductor: bus.conductor,
+    conductor_username: bus.conductor_username,
+    conductor_password: bus.conductor_password,
     timePeriods: bus.timePeriods || ['', '', '', ''], // Default to 4 time periods if not provided
   });
 
@@ -91,6 +93,24 @@ const UpdateBus = () => {
             placeholder="Conductor"
             value={updatedBusInfo.conductor}
             onChange={e => setUpdatedBusInfo({ ...updatedBusInfo, conductor: e.target.value })}
+          />
+        </div>
+        <div className="form-group">
+          <label>Conductor UserName:</label>
+          <input
+            type="text"
+            placeholder="Conductor UserName"
+            value={updatedBusInfo.conductor_username}
+            onChange={e => setUpdatedBusInfo({ ...updatedBusInfo, conductor_username: e.target.value })}
+          />
+        </div>
+        <div className="form-group">
+          <label>Conductor Password:</label>
+          <input
+            type="text"
+            placeholder="Conductor Password"
+            value={updatedBusInfo.conductor_password}
+            onChange={e => setUpdatedBusInfo({ ...updatedBusInfo, conductor_password: e.target.value })}
           />
         </div>
       </div>

@@ -1,45 +1,50 @@
 .header {
-    background-color: #f8f9fa;
-    padding: 10px;
-  }
-  
-  .appname h2 {
-    margin: 0;
-    font-size: 24px;
-  }
-  
-  .menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .menu .nav__item {
-    margin: 0 10px;
-  }
-  
-  .menu .nav__item a {
-    text-decoration: none;
-    color: #000;
-  }
-  
-  .menu .nav__item a:hover {
-    color: #007BFF;
-  }
-  
-  .nav__btns {
-    display: flex;
-    align-items: center;
-  }
-  
-  .btn_logout a {
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .btn_logout a:hover {
-    text-decoration: underline;
-  }
-  
+  background-color: #333;
+  padding: 10px 0;
+ }
+ 
+ .appname h2 {
+  color: #fff;
+  margin: 0;
+  padding: 0 20px;
+ }
+ 
+ .navigation {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+ }
+ 
+ .menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+ }
+ 
+ .nav__item {
+  margin: 0 10px;
+ }
+ 
+ .nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+ }
+ 
+ 
+ 
+ .active {
+  background-color: #4CAF50;
+  color: #fff;
+ }
+ 
+ .logout-btn {
+  background-color: #FF4500;
+  color: #fff;
+ }
+ 
+ .logout-btn:hover {
+  background-color: #FF6347;
+ }

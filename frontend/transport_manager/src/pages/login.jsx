@@ -39,9 +39,8 @@ const Login = () => {
         
         const userData = await response.json();
         localStorage.setItem("userInfo", JSON.stringify(userData));
-
-        toast.success("Login successful");
         navigate("/home"); 
+        toast.success("Login successful");
       } else {
         toast.error("Invalid credentials");
       }
@@ -52,7 +51,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+  /*  <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div className="form-group">
@@ -77,6 +76,45 @@ const Login = () => {
             <span style={{ textDecoration: "underline", cursor: "pointer", color: "#4aee88", fontWeight: "bold" }}
             onClick={() => navigate("/signup")}>
               Sign Up
+            </span>
+          </p>
+      </form>
+      <Toaster />
+    </div>
+
+    */
+
+    <div className="sign-up-container">
+      <h2>LogIn</h2>
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>Email:</label>
+          <input type="email"
+           value={email}  
+          placeholder="Enter Your email"
+          onChange={(e) => setEmail(e.target.value)} />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type="password" 
+          value={password} 
+          placeholder="Enter Your Password"
+          onChange={(e) => setPassword(e.target.value)}
+           />
+        </div>
+        <button type="submit">LogIn</button>
+        <p className="signUPcreateInfo">
+            Dont have an account.{" "}
+            <span
+              style={{
+                textDecoration: "underline",
+                cursor: "pointer",
+                color: "#4aee88",
+                fontWeight: "bold",
+              }}
+              onClick={() => navigate("/signup")}
+            >
+              SignUp
             </span>
           </p>
       </form>

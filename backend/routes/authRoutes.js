@@ -51,8 +51,8 @@ router.post('/login', async (req, res) => {
                   });
             } else {
                 res.status(401).send('Invalid password');
-                console.log('hello')
-            }npm 
+                
+            }
         } else {
             res.status(401).send('Invalid credentials');
         }
