@@ -18,7 +18,7 @@ const Login = ({ navigation }) => {
 
   const handleConductorLogin = async () => {
     try {
-      const response = await fetch('http://192.168.38.186:4000/auth/conductor/login', {
+      const response = await fetch('http://192.168.78.186:4000/auth/conductor/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

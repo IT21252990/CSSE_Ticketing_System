@@ -17,6 +17,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 const NewJourney = ({ navigation }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [totalPrice, setTotalPrice] = useState("1040.00");
+  
   return (
     <LinearGradient
       style={{
@@ -227,14 +229,15 @@ const NewJourney = ({ navigation }) => {
                 }}
               >
                 <TextInput
-                  value="LKR. 1040.00"
+                  value={totalPrice}
                   placeholderTextColor={"#000000"}
                   keyboardType="email-address"
                   style={{
                     width: "100%",
                     color: COLORS.darkGray
                   }}
-                  editable={false}
+                  onChangeText={(text) => setTotalPrice(text)}
+                  editable={true}
                 />
               </View>
             </View>
@@ -245,9 +248,9 @@ const NewJourney = ({ navigation }) => {
                 userId:"652cd67e91bbf39b53498639",
                 startLocation: "Kandy",
                 endLocation: "Panadura",
-                pricePerTicket: "LKR. 520.00",
+                pricePerTicket: "520.00",
                 ticketQuantity: "2",
-                totalPrice: "LKR. 1040.00"
+                totalPrice: totalPrice
               })}
               filled
               style={{

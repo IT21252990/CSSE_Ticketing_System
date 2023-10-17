@@ -24,6 +24,7 @@ const QRDisplay = ({ navigation }) => {
   const [inputText, setInputText] = useState('');
   const [qrvalue, setQrvalue] = useState('');
   const route = useRoute();
+  const [credits, setCredits] = useState(null);
 
   const {
     userId,
@@ -34,38 +35,66 @@ const QRDisplay = ({ navigation }) => {
     totalPrice
   } = route.params;
 
-  const handleCreateTicket = async (e) => {
-    try {
-      const response = await fetch("http://192.168.38.186:4000/ticket/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId,
-          startLocation,
-          endLocation,
-          pricePerTicket,
-          ticketQuantity,
-          totalPrice
-        }),
-      });
+  const totalPriceAsNumber = parseFloat(totalPrice);
+  const creditsAsNumber = parseFloat(credits);
 
-      if (response.ok) {
-        Alert.alert(
-          "Ticket sent successfully"
-        );
-      } else {
-        console.log(response);
-        Alert.alert(
-          "Failed to send ticket"
-        );
-      }
-    } catch (error) {
-      console.error("Error:", error);
+  const UserCredits = ({ userId }) => {
+
+    useEffect(() => {
+      const fetchCredits = async () => {
+        try {
+          const response = await fetch(`http://localhost:4000/users/${userId}/credits`);
+          const data = await response.json();
+          if (response.ok) {
+            setCredits(data.credits);
+          } else {
+            console.error('Error:', data.message);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+
+      fetchCredits();
+    }, [userId]);
+  }
+
+  const handleCreateTicket = async (e) => {
+    if (creditsAsNumber < totalPriceAsNumber) {
       Alert.alert(
-        "An error occurred"
+        "Insufficient Credits",
+        "You don't have enough credits to purchase this ticket."
       );
+      return;
+    }
+
+    else {
+      try {
+        const response = await fetch("http://192.168.78.186:4000/ticket/add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            startLocation,
+            endLocation,
+            pricePerTicket,
+            ticketQuantity,
+            totalPrice,
+          }),
+        });
+
+        if (response.ok) {
+          Alert.alert("Ticket sent successfully");
+        } else {
+          console.log(response);
+          Alert.alert("Failed to send ticket");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        Alert.alert("An error occurred");
+      }
     }
   };
 

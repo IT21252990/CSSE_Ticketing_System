@@ -17,15 +17,15 @@ const ticketSchema = new Schema({
         required: true,
     },
     pricePerTicket: {
-        type: Number,
+        type: String,
         required: true,
     },
     ticketQuantity: {
-        type: Number,
+        type: String,
         required: true,
     },
     totalPrice: {
-        type: Number,
+        type: String,
         required: true,
     },
 },{timestamps: true});
