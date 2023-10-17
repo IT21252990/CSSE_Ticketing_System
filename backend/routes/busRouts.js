@@ -106,7 +106,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-//bus route
+//bus price route
 
 router.post('/add-route', async (req, res) => {
     try {
@@ -124,6 +124,17 @@ router.post('/add-route', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+//GET all routes
+router.get('/get-routes', async (req, res) => {
+    try {
+        const routes = await Routes.find();
+        res.status(200).json(routes);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
 
 
 

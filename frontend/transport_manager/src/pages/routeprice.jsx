@@ -41,7 +41,7 @@ const Price = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Route added successfully:', data);
-                navigate('/'); // Navigate to the desired page after adding the route
+                navigate('/price'); 
                 toast.success('Route added successfully');
             })
             .catch((error) => {
