@@ -39,7 +39,8 @@ const QRDisplay = ({ navigation }) => {
       Journey End Location: ${end_route}\n
       Ticket Price : LKR. ${price_per_ticket}\n
       Ticket Quantity : ${ticket_quantity}\n
-      Total Price : LKR. ${total_price}\n`
+      Total Price : LKR. ${total_price}\n
+      Status : PAID ✔\n`
     );
     setShowQR(true); // Show the QR code when generated
   };
@@ -90,6 +91,12 @@ const QRDisplay = ({ navigation }) => {
           <Text style={styles.titleStyle}>
             📌 Total Amount : LKR. {total_price}
           </Text>
+          <Text style={styles.titleStyle}>
+            📌 Status :
+          </Text>
+          <Text style={styles.mytitleStyle}>
+             PAID ✔
+          </Text>
           <TouchableOpacity style={styles.buttonStyle} onPress={generateQRCode}>
             <Text style={styles.buttonTextStyle}>Generate QR Code</Text>
           </TouchableOpacity>
@@ -135,6 +142,15 @@ const styles = StyleSheet.create({
     margin: 10,
     marginBottom: 10,
     marginLeft: 50,
+  },
+  mytitleStyle: {
+    fontSize: 18,
+    margin: 10,
+    marginLeft: 140,
+    color:"#00ff00",
+    fontWeight:"bold",
+    position:"absolute",
+    marginTop:397
   },
   textStyle: {
     textAlign: "center",

@@ -157,7 +157,7 @@ const Login = ({ navigation }) => {
               <TextInput
                 placeholder="Enter your password"
                 placeholderTextColor={COLORS.black}
-                secureTextEntry={isPasswordShown}
+                secureTextEntry={!isPasswordShown}
                 value={password}
               onChangeText={text => setPassword(text)}
                 style={{
@@ -173,9 +173,9 @@ const Login = ({ navigation }) => {
                 }}
               >
                 {isPasswordShown == true ? (
-                  <Ionicons name="eye-off" size={24} color={COLORS.black} />
-                ) : (
                   <Ionicons name="eye" size={24} color={COLORS.black} />
+                ) : (
+                  <Ionicons name="eye-off" size={24} color={COLORS.black} />
                 )}
               </TouchableOpacity>
             </View>

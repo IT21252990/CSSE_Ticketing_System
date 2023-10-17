@@ -264,17 +264,29 @@ const NewJourney = ({ navigation }) => {
             />
 
             <Button
+              title="Pay"
+              onPress={() => {
+              }}
+              filled
+              style={{
+                marginTop: 18,
+                marginBottom: 4,
+                borderColor: COLORS.tertinary,
+              }}
+            />
+
+            <Button
               title="Next"
               onPress={() =>
                 navigation.navigate("QRDisplay", {
-                  start_route:start_route,
-                  end_route:end_route,
-                  p_Id:p_Id,
-                  p_Fname:p_Fname,
-                  p_Lname:p_Lname,
-                  ticket_quantity:ticket_quantity,
-                  price_per_ticket:price_per_ticket,
-                  total_price:total_price,
+                  start_route: start_route,
+                  end_route: end_route,
+                  p_Id: p_Id,
+                  p_Fname: p_Fname,
+                  p_Lname: p_Lname,
+                  ticket_quantity: ticket_quantity,
+                  price_per_ticket: price_per_ticket,
+                  total_price: total_price,
                 })
               }
               filled

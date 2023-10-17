@@ -5,7 +5,8 @@ import {
   Pressable,
   TextInput,
   TouchableOpacity,
-  Alert
+  Alert,
+  ScrollView
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -124,6 +125,8 @@ const Signup = ({ navigation }) => {
             Connect with WayFare today!
           </Text>
         </View>
+
+        <ScrollView>
 
         {/* passenger signUp fistname */}
 
@@ -305,7 +308,7 @@ const Signup = ({ navigation }) => {
             <TextInput
               placeholder="Enter your password"
               placeholderTextColor={COLORS.black}
-              secureTextEntry={isPasswordShown}
+              secureTextEntry={!isPasswordShown}
               value={password}
               onChangeText={text => setPassword(text)}
               style={{
@@ -321,9 +324,9 @@ const Signup = ({ navigation }) => {
               }}
             >
               {isPasswordShown == true ? (
-                <Ionicons name="eye-off" size={24} color={COLORS.black} />
-              ) : (
                 <Ionicons name="eye" size={24} color={COLORS.black} />
+              ) : (
+                <Ionicons name="eye-off" size={24} color={COLORS.black} />
               )}
             </TouchableOpacity>
           </View>
@@ -357,7 +360,7 @@ const Signup = ({ navigation }) => {
             <TextInput
               placeholder="Enter your  Comfirm Password"
               placeholderTextColor={COLORS.black}
-              secureTextEntry={isPasswordShown}
+              secureTextEntry={!isPasswordShown}
               value={confirmPassword}
               onChangeText={text => setConfirmPassword(text)}
               style={{
@@ -373,9 +376,9 @@ const Signup = ({ navigation }) => {
               }}
             >
               {isPasswordShown == true ? (
-                <Ionicons name="eye-off" size={24} color={COLORS.black} />
-              ) : (
                 <Ionicons name="eye" size={24} color={COLORS.black} />
+              ) : (
+                <Ionicons name="eye-off" size={24} color={COLORS.black} />
               )}
             </TouchableOpacity>
           </View>
@@ -415,6 +418,7 @@ const Signup = ({ navigation }) => {
             </Text>
           </Pressable>
         </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
     </LinearGradient>
