@@ -1,11 +1,37 @@
 import { View, Text } from "react-native";
-import React from "react";
 import COLORS from "../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "../components/Button";
 import NewJourney from './NewJourney'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useState, useEffect, useRef } from "react";
+
+
 
 const Home = ({ navigation }) => {
+  const [passengerId, setPassengerId] = useState(null);
+  const [PassengerFirstName, setPassengerFirstName] = useState(null);
+  const [PassengerlastName, setPassengerLastName] = useState(null);
+
+
+  function getuserdata() {
+    AsyncStorage.getItem("passengerInfo")
+      .then((value) => {
+        if (value !== null) {
+          const userData = JSON.parse(value);
+          setPassengerId(userData._id);
+          setPassengerFirstName(userData.firstName);
+          setPassengerLastName(userData.lastName);
+        }
+      })
+      .catch((error) => {
+        console.log("error fetching user ID");
+      });
+  }
+
+  useEffect(() => {
+    getuserdata();
+  }, []);
   return (
     <>
 
@@ -25,7 +51,19 @@ const Home = ({ navigation }) => {
               marginLeft: 20,
             }}
           >
-            Welcome username
+            Welcome !! 
+          </Text>
+
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: 800,
+              color: "#000000",
+              marginTop: 10,
+              marginLeft: 100,
+            }}
+          >
+            {PassengerFirstName} {PassengerlastName}
           </Text>
 
           <Button

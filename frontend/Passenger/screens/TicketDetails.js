@@ -14,10 +14,15 @@ import Button from "../components/Button";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from "@expo/vector-icons";
 import QRDisplay from "./QRDisplay";
+import { useRoute } from "@react-navigation/native";
+import {useParams} from 'react-router-native'
 
 const NewJourney = ({ navigation }) => {
-  const [isPasswordShown, setIsPasswordShown] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const route = useRoute();
+
+  const { start_route, end_route, p_Id, p_Fname, p_Lname , ticket_quantity } = route.params;
+
+ 
   return (
     <LinearGradient
       style={{
@@ -84,11 +89,12 @@ const NewJourney = ({ navigation }) => {
                 }}
               >
                 <TextInput
-                  value="Passenger Name"
+                  value={start_route}
                   placeholderTextColor={"#000000"}
                   keyboardType="email-address"
                   style={{
                     width: "100%",
+                    color:"#000"
                   }}
                   editable={false}
                 />
@@ -119,11 +125,12 @@ const NewJourney = ({ navigation }) => {
                 }}
               >
                 <TextInput
-                  value="Token ID"
+                  value={end_route}
                   placeholderTextColor={"#000000"}
                   keyboardType="email-address"
                   style={{
                     width: "100%",
+                    color:"#000"
                   }}
                   editable={false}
                 />
@@ -154,11 +161,12 @@ const NewJourney = ({ navigation }) => {
                 }}
               >
                 <TextInput
-                  value="Katunayake"
+                  value={p_Id}
                   placeholderTextColor={"#000000"}
                   keyboardType="email-address"
                   style={{
                     width: "100%",
+                    color:"#000"
                   }}
                   editable={false}
                 />
@@ -189,11 +197,12 @@ const NewJourney = ({ navigation }) => {
                 }}
               >
                 <TextInput
-                  placeholder="Enter your destination"
-                  placeholderTextColor={"#000000"}
+                  value={ticket_quantity}
+                  editable = {false}
                   keyboardType="email-address"
                   style={{
                     width: "100%",
+                    color:"#000"
                   }}
                 />
               </View>

@@ -5,7 +5,6 @@ import {
     Pressable,
     TextInput,
     TouchableOpacity,
-    
     StyleSheet,
   } from "react-native";
   import React, { useState  , useEffect} from "react";
@@ -16,11 +15,19 @@ import {
   import { LinearGradient } from "expo-linear-gradient";
   import { MaterialIcons } from "@expo/vector-icons";
   import QRCode from 'react-native-qrcode-svg';
+  import { useRoute } from "@react-navigation/native";
+  import {useParams} from 'react-router-native'
+
 
   
   const QRDisplay = ({ navigation }) => {
     const [inputText, setInputText] = useState('');
   const [qrvalue, setQrvalue] = useState('');
+
+  const route = useRoute();
+
+  const { start_route, end_route, p_Id, p_Fname, p_Lname } = route.params;
+
     return (
       <LinearGradient
       style={{
@@ -44,16 +51,16 @@ import {
             // testID="qr-code" 
           />
           
-          <TextInput
+          {/* <TextInput
             style={styles.textInputStyle}
             onChangeText={
               (inputText) => setInputText(inputText)
             }
             value={inputText}
-          />
+          /> */}
           <TouchableOpacity
             style={styles.buttonStyle}
-            onPress={() => setQrvalue(inputText)}>
+            onPress={() => setQrvalue(`UserId: ${p_Id}\nUser Name: ${p_Fname} + ${p_Lname}\nStart Location: ${start_route}\nEnd Location: ${end_route}\n`)}>
             <Text style={styles.buttonTextStyle}>
               Generate QR Code
             </Text>
