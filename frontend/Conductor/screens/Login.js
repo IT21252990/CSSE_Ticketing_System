@@ -7,7 +7,7 @@ import Button from '../components/Button';
 import { LinearGradient } from "expo-linear-gradient";
 import BottomTabNavigation from "../navigations/BottomTabNavigation";
 import Home from './Home'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Login = ({ navigation }) => {
@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
 
       if (response.ok) {
         const conductorData = await response.json();
-        // localStorage.setItem("conductorInfo", JSON.stringify(conductorData));
+        AsyncStorage.setItem("conductorInfo", JSON.stringify(conductorData));
         Alert.alert(
           "Login successful"
         );
@@ -65,150 +65,109 @@ const Login = ({ navigation }) => {
               marginVertical: 12,
               color: COLORS.black
             }}>
-              Hi Welcome Back ! 👋
+              Hi Welcome Back !
             </Text>
 
             <Text style={{
-              fontSize: 16,
+              fontSize: 40,
+              marginTop:10,
               color: COLORS.black
-            }}>Hello again you have been missed!</Text>
-          </View>
+            }}>WayFare 🚍</Text>
 
-          <View style={{ marginBottom: 12 }}>
             <Text style={{
-              fontSize: 16,
-              fontWeight: 400,
-              marginVertical: 8
-            }}>User Name</Text>
-
-            <View style={{
-              width: "100%",
-              height: 48,
-              borderColor: COLORS.black,
-              borderWidth: 1,
-              borderRadius: 8,
-              alignItems: "center",
-              justifyContent: "center",
-              paddingLeft: 22
-            }}>
-              <TextInput
-                placeholder='Enter your user name'
-                placeholderTextColor={COLORS.black}
-                keyboardType='default'
-                style={{ width: '100%' }}
-                value={username}
-                onChangeText={(text) => setUsername(text)}
-              />
-            </View>
+              fontSize: 25,
+              marginTop:10,
+              color: COLORS.darkGray
+            }}>Conductor Login</Text>
           </View>
 
-          <View style={{ marginBottom: 12 }}>
-            <Text style={{
-              fontSize: 16,
-              fontWeight: 400,
-              marginVertical: 8
-            }}>Password</Text>
+          <View  style={{ marginTop: 12 }}>
+            <View style={{ marginBottom: 12 }}>
+              <Text style={{
+                fontSize: 16,
+                fontWeight: 400,
+                marginVertical: 8
+              }}>User Name</Text>
 
-            <View style={{
-              width: "100%",
-              height: 48,
-              borderColor: COLORS.black,
-              borderWidth: 1,
-              borderRadius: 8,
-              alignItems: "center",
-              justifyContent: "center",
-              paddingLeft: 22
-            }}>
-              <TextInput
-                placeholder='Enter your password'
-                placeholderTextColor={COLORS.black}
-                secureTextEntry={isPasswordShown}
-                style={{ width: '100%' }}
-                value={password}
-                onChangeText={(text) => setPassword(text)}
-              />
-
-              <TouchableOpacity
-                onPress={() => setIsPasswordShown(!isPasswordShown)}
-                style={{
-                  position: "absolute",
-                  right: 12
-                }}
-              >
-                {
-                  isPasswordShown == true ? (
-                    <Ionicons name="eye-off" size={24} color={COLORS.black} />
-                  ) : (
-                    <Ionicons name="eye" size={24} color={COLORS.black} />
-                  )
-                }
-
-              </TouchableOpacity>
+              <View style={{
+                width: "100%",
+                height: 48,
+                borderColor: COLORS.black,
+                borderWidth: 1,
+                borderRadius: 8,
+                alignItems: "center",
+                justifyContent: "center",
+                paddingLeft: 22
+              }}>
+                <TextInput
+                  placeholder='Enter your user name'
+                  placeholderTextColor={COLORS.black}
+                  keyboardType='default'
+                  style={{ width: '100%' }}
+                  value={username}
+                  onChangeText={(text) => setUsername(text)}
+                />
+              </View>
             </View>
-          </View>
+
+            <View style={{ marginBottom: 12 }}>
+              <Text style={{
+                fontSize: 16,
+                fontWeight: 400,
+                marginVertical: 8
+              }}>Password</Text>
+
+              <View style={{
+                width: "100%",
+                height: 48,
+                borderColor: COLORS.black,
+                borderWidth: 1,
+                borderRadius: 8,
+                alignItems: "center",
+                justifyContent: "center",
+                paddingLeft: 22
+              }}>
+                <TextInput
+                  placeholder='Enter your password'
+                  placeholderTextColor={COLORS.black}
+                  secureTextEntry={isPasswordShown}
+                  style={{ width: '100%' }}
+                  value={password}
+                  onChangeText={(text) => setPassword(text)}
+                />
+
+                <TouchableOpacity
+                  onPress={() => setIsPasswordShown(!isPasswordShown)}
+                  style={{
+                    position: "absolute",
+                    right: 12
+                  }}
+                >
+                  {
+                    isPasswordShown == true ? (
+                      <Ionicons name="eye" size={24} color={COLORS.black} />
+                    ) : (
+                      <Ionicons name="eye-off" size={24} color={COLORS.black} />
+                    )}
+
+                </TouchableOpacity>
+              </View>
+            </View>
 
 
 
-          <Button
-            title="Login"
-            onPress={handleConductorLogin}
-            filled
-            style={{
-              marginTop: 18,
-              marginBottom: 4,
-              borderColor: COLORS.tertinary
-            }}
-          />
-          <View>
-            <Image
-              source={require("../assets/hero1.jpg")}
+            <Button
+              title="Login"
+              onPress={handleConductorLogin}
+              filled
               style={{
-                height: 100,
-                width: 100,
-                borderRadius: 20,
-                position: "absolute",
-                top: 10,
-                transform: [
-                  { translateX: 20 },
-                  { translateY: 50 },
-                  { rotate: "-15deg" },
-                ],
+                marginTop: 18,
+                marginBottom: 4,
+                borderColor: COLORS.tertinary
               }}
             />
-
-            <Image
-              source={require("../assets/hero3.jpg")}
-              style={{
-                height: 100,
-                width: 100,
-                borderRadius: 20,
-                position: "absolute",
-                top: -30,
-                left: 100,
-                transform: [
-                  { translateX: 50 },
-                  { translateY: 50 },
-                  { rotate: "-5deg" },
-                ],
-              }}
-            />
-
-            <Image
-              source={require("../assets/hero3.jpg")}
-              style={{
-                width: 100,
-                height: 100,
-                borderRadius: 20,
-                position: "absolute",
-                top: 130,
-                left: -50,
-                transform: [
-                  { translateX: 50 },
-                  { translateY: 50 },
-                  { rotate: "15deg" },
-                ],
-              }}
-            />
+            <View>
+            </View>
 
             <Image
               source={require("../assets/hero2.jpg")}
@@ -217,12 +176,12 @@ const Login = ({ navigation }) => {
                 width: 200,
                 borderRadius: 20,
                 position: "absolute",
-                top: 110,
-                left: 100,
+                top: 300,
+                left: 30,
                 transform: [
                   { translateX: 50 },
                   { translateY: 50 },
-                  { rotate: "-15deg" },
+                  { rotate: "-20deg" },
                 ],
               }}
             />

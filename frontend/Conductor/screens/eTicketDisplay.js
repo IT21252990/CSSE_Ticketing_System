@@ -176,17 +176,24 @@ const styles = StyleSheet.create({
   },
 
   buttonStyle: {
-    backgroundColor: COLORS.darkGray,
+    backgroundColor: COLORS.secondary,
+    borderColor: COLORS.darkGray,
+    shadowColor: COLORS.secondary,
+    shadowOffset: {
+      width: 4,
+      height: 4,
+    },
+    shadowOpacity: 10,
+    shadowRadius: 6,
+    elevation: 10,
     borderWidth: 0,
     color: COLORS.lightOrange,
-    borderColor: COLORS.primary,
     alignItems: 'center',
     borderRadius: 5,
     marginTop: 30,
     padding: 10,
   },
   buttonTextStyle: {
-    color: '#FFFFFF',
     paddingVertical: 10,
     fontSize: 16,
     width: 100,
