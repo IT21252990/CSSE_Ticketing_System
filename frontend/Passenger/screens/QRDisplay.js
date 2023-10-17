@@ -1,118 +1,164 @@
+import React, { useState } from "react";
 import {
-    View,
-    Text,
-    Image,
-    Pressable,
-    TextInput,
-    TouchableOpacity,
-    StyleSheet,
-  } from "react-native";
-  import React, { useState  , useEffect} from "react";
-  import { SafeAreaView } from "react-native-safe-area-context";
-  import COLORS from "../constants/colors";
-  import { Ionicons } from "@expo/vector-icons";
-  import Button from "../components/Button";
-  import { LinearGradient } from "expo-linear-gradient";
-  import { MaterialIcons } from "@expo/vector-icons";
-  import QRCode from 'react-native-qrcode-svg';
-  import { useRoute } from "@react-navigation/native";
-  import {useParams} from 'react-router-native'
+  View,
+  Text,
+  Image,
+  Pressable,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import COLORS from "../constants/colors";
+import { MaterialIcons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import QRCode from "react-native-qrcode-svg";
+import { useRoute } from "@react-navigation/native";
 
-
-  
-  const QRDisplay = ({ navigation }) => {
-    const [inputText, setInputText] = useState('');
-  const [qrvalue, setQrvalue] = useState('');
-
+const QRDisplay = ({ navigation }) => {
+  const [qrvalue, setQrvalue] = useState(null); // Initialize as null
+  const [showQR, setShowQR] = useState(false); // Tracks whether to show the QR code
   const route = useRoute();
 
-  const { start_route, end_route, p_Id, p_Fname, p_Lname } = route.params;
+  const {
+    start_route,
+    end_route,
+    p_Id,
+    p_Fname,
+    p_Lname,
+    ticket_quantity,
+    price_per_ticket,
+    total_price,
+  } = route.params;
 
-    return (
-      <LinearGradient
+  const generateQRCode = () => {
+    setQrvalue(
+      `Passenger ID: ${p_Id}\n
+      Passenger Name: ${p_Fname} ${p_Lname}\n
+      Journey Start Location: ${start_route}\n
+      Journey End Location: ${end_route}\n
+      Ticket Price : LKR. ${price_per_ticket}\n
+      Ticket Quantity : ${ticket_quantity}\n
+      Total Price : LKR. ${total_price}\n`
+    );
+    setShowQR(true); // Show the QR code when generated
+  };
+
+  return (
+    <LinearGradient
       style={{
         flex: 1,
       }}
       colors={[COLORS.primary, COLORS.tertinary]}
     >
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
-        <Text style={styles.titleStyle}>
-            Your Journey Ticket
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{ marginLeft: 5, marginTop: 10 }}
+          >
+            <Text
+              style={{
+                fontSize: 18,
+                position: "absolute",
+                marginLeft: 20,
+                marginTop: 2,
+              }}
+            >
+              Back
+            </Text>
+            <MaterialIcons
+              name="keyboard-arrow-left"
+              size={24}
+              color={COLORS.black}
+            />
+          </TouchableOpacity>
+          <Text style={styles.maintitleStyle}>Your Journey Ticket</Text>
+          <Text style={styles.titleStyle2}>Please Waiting for Conductor</Text>
+          <Text style={styles.titleStyle}>
+            📌 Passenger Name : {p_Fname} {p_Lname}
           </Text>
           <Text style={styles.titleStyle}>
-            Please Waiting for Conductor 
+            📌 Journey : {start_route} to {end_route}
           </Text>
-          <QRCode
-            value={qrvalue ? qrvalue : 'NA'}
-            size={250}
-            color="black"
-            backgroundColor="white"
-            // testID="qr-code" 
-          />
-          
-          {/* <TextInput
-            style={styles.textInputStyle}
-            onChangeText={
-              (inputText) => setInputText(inputText)
-            }
-            value={inputText}
-          /> */}
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            onPress={() => setQrvalue(`UserId: ${p_Id}\nUser Name: ${p_Fname} + ${p_Lname}\nStart Location: ${start_route}\nEnd Location: ${end_route}\n`)}>
-            <Text style={styles.buttonTextStyle}>
-              Generate QR Code
-            </Text>
+          <Text style={styles.titleStyle}>
+            📌 Ticket Price per Person : LKR. {price_per_ticket}
+          </Text>
+          <Text style={styles.titleStyle}>
+            📌 Ticket Quantity : {ticket_quantity}
+          </Text>
+          <Text style={styles.titleStyle}>
+            📌 Total Amount : LKR. {total_price}
+          </Text>
+          <TouchableOpacity style={styles.buttonStyle} onPress={generateQRCode}>
+            <Text style={styles.buttonTextStyle}>Generate QR Code</Text>
           </TouchableOpacity>
+          <View style={{ alignItems: "center", marginTop: 20 }}>
+            {showQR && qrvalue && (
+              <QRCode
+                value={qrvalue}
+                size={250}
+                color="black"
+                backgroundColor="white"
+              />
+            )}
+          </View>
         </View>
       </SafeAreaView>
-      </LinearGradient>
-    );
-  };
-  
-  export default QRDisplay;
+    </LinearGradient>
+  );
+};
+
+export default QRDisplay;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    padding: 10,
+    padding: 5,
+  },
+  maintitleStyle: {
+    fontSize: 30,
+    textAlign: "center",
+    margin: 10,
+    marginBottom: 20,
+    marginTop: 10,
+    fontWeight: "bold",
+  },
+  titleStyle2: {
+    fontSize: 25,
+    textAlign: "center",
+    margin: 5,
+    marginBottom: 50,
   },
   titleStyle: {
-    fontSize: 20,
-    textAlign: 'center',
+    fontSize: 18,
     margin: 10,
-    marginBottom:20
+    marginBottom: 10,
+    marginLeft: 50,
   },
   textStyle: {
-    textAlign: 'center',
-    margin: 10,
-  },
-  textInputStyle: {
-    flexDirection: 'row',
-    height: 40,
-    marginTop: 20,
-    marginLeft: 35,
-    marginRight: 35,
+    textAlign: "center",
     margin: 10,
   },
   buttonStyle: {
-    backgroundColor: '#51D8C7',
-    borderWidth: 0,
-    color: '#FFFFFF',
-    borderColor: '#51D8C7',
-    alignItems: 'center',
-    borderRadius: 5,
-    marginTop: 30,
-    padding: 10,
+    marginLeft: "20%",
+    paddingBottom: 16,
+    paddingVertical: 10,
+    borderColor: COLORS.primary,
+    borderWidth: 2,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 18,
+    marginBottom: 4,
+    borderColor: COLORS.tertinary,
+    backgroundColor: COLORS.primary,
+    width: "60%",
   },
   buttonTextStyle: {
-    color: '#FFFFFF',
-    paddingVertical: 10,
-    fontSize: 16,
+    color: COLORS.darkGray,
+    paddingVertical: 5,
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
-  

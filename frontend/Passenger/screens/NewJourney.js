@@ -23,7 +23,6 @@ const NewJourney = ({ navigation }) => {
   const [PassengerFirstName, setPassengerFirstName] = useState(null);
   const [PassengerlastName, setPassengerLastName] = useState(null);
 
-
   function getuserdata() {
     AsyncStorage.getItem("passengerInfo")
       .then((value) => {
@@ -47,9 +46,9 @@ const NewJourney = ({ navigation }) => {
   const [busRoutes, setBusRoutes] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.86.72:4000/Bus/bus-routes")
+    fetch("http://192.168.86.72:4000/busRoute")
       .then((response) => response.json())
-      .then((data) => setBusRoutes(data))
+      .then((data) => setBusRoutes(data), setData(data))
       .catch((error) => console.error(error));
   }, []);
 
@@ -57,15 +56,16 @@ const NewJourney = ({ navigation }) => {
   const [clicked, setClicked] = useState(false);
   const [data, setData] = useState(busRoutes);
   const [selectedRoute, setSelectedRoute] = useState("");
-  const [ticketQuantity, setTicketQuantity] = useState('');
+  const [ticketQuantity, setTicketQuantity] = useState("");
+
 
   const searchRef = useRef();
   const onSearch = (search) => {
     if (search !== "") {
       let tempData = data.filter((route) => {
         return (
-          route.start_route.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
-          route.end_route.toLowerCase().indexOf(search.toLowerCase()) > -1
+          route.start_point.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
+          route.end_point.toLowerCase().indexOf(search.toLowerCase()) > -1
         );
       });
       setData(tempData);
@@ -73,7 +73,6 @@ const NewJourney = ({ navigation }) => {
       setData(busRoutes);
     }
   };
-
   return (
     <LinearGradient
       style={{
@@ -146,7 +145,7 @@ const NewJourney = ({ navigation }) => {
                 keyboardType="email-address"
                 style={{
                   width: "100%",
-                  color:"#000"
+                  color: "#000",
                 }}
                 editable={false}
               />
@@ -154,16 +153,14 @@ const NewJourney = ({ navigation }) => {
           </View>
 
           <Text
-              style={{
-                fontSize: 16,
-                fontWeight: 400,
-                marginVertical: 10,
-              }}
-            >
-              Select Bus Route :
-            </Text>
-
-          
+            style={{
+              fontSize: 16,
+              fontWeight: 400,
+              marginVertical: 10,
+            }}
+          >
+            Select Bus Route :
+          </Text>
 
           <TouchableOpacity
             style={{
@@ -177,7 +174,7 @@ const NewJourney = ({ navigation }) => {
               borderColor: COLORS.black,
               borderWidth: 1,
               borderRadius: 8,
-  
+
               paddingLeft: 22,
             }}
             onPress={() => {
@@ -199,7 +196,14 @@ const NewJourney = ({ navigation }) => {
               />
             )}
           </TouchableOpacity>
-          <ScrollView style={{ marginTop: 10 , position:"absolute" , width:"95%" , top:215}}>
+          <ScrollView
+            style={{
+              marginTop: 10,
+              position: "absolute",
+              width: "95%",
+              top: 215,
+            }}
+          >
             {clicked ? (
               <View
                 style={{
@@ -246,8 +250,9 @@ const NewJourney = ({ navigation }) => {
                           borderColor: "#8e8e8e",
                         }}
                         onPress={() => {
+
                           setSelectedRoute(
-                            `${item.start_route}` + " - " + `${item.end_route}`
+                            `${item.start_point}` + " - " + `${item.end_point}` + " - " + `${item.price}`
                           );
                           setClicked(!clicked);
                           onSearch("");
@@ -261,7 +266,7 @@ const NewJourney = ({ navigation }) => {
                             marginTop: 20,
                           }}
                         >
-                          {item.start_route} - {item.end_route}
+                          {item.start_point} - {item.end_point}
                         </Text>
                       </TouchableOpacity>
                     );
@@ -271,101 +276,89 @@ const NewJourney = ({ navigation }) => {
             ) : null}
           </ScrollView>
           {!clicked ? (
-          <View style={{ marginBottom: 0 }}>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: 400,
-                marginVertical: 10,
-              }}
-            >
-              Ticket Quantity :
-            </Text>
+            <View style={{ marginBottom: 0 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 400,
+                  marginVertical: 10,
+                }}
+              >
+                Ticket Quantity :
+              </Text>
 
-            <View
-              style={{
-                width: "100%",
-                height: 40,
-                borderColor: COLORS.black,
-                borderWidth: 1,
-                borderRadius: 8,
-                alignItems: "center",
-                justifyContent: "center",
-                paddingLeft: 22,
-              }}
-            >
-              <TextInput
-                placeholder="Add ticket Quantity here"
-                keyboardType="numeric"
-                value={ticketQuantity}
-              onChangeText={text => setTicketQuantity(text)}
+              <View
                 style={{
                   width: "100%",
-                  color: "#000000",
+                  height: 40,
+                  borderColor: COLORS.black,
+                  borderWidth: 1,
+                  borderRadius: 8,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  paddingLeft: 22,
                 }}
-              />
+              >
+                <TextInput
+                  placeholder="Add ticket Quantity here"
+                  keyboardType="numeric"
+                  value={ticketQuantity}
+                  onChangeText={(text) => setTicketQuantity(text)}
+                  style={{
+                    width: "100%",
+                    color: "#000000",
+                  }}
+                />
+              </View>
             </View>
-          </View>
           ) : null}
 
-{!clicked ? (
-          <Button 
-            title="Next"
-            onPress={() => 
-               {
+          {!clicked ? (
+            <Button
+              title="Next"
+              onPress={() => {
                 if (selectedRoute) {
-                 const [startRoute, endRoute] = selectedRoute.split(" - ");
-                navigation.navigate("TicketDetails",
-                  {
-                    start_route: startRoute,
-                    end_route: endRoute,
-                    p_Id: passengerId,
-                    // p_Id: "44444",
-                    p_Fname: PassengerFirstName,
-                    p_Lname: PassengerlastName,
-                    ticket_quantity:ticketQuantity
-                  });
-                
-              } else {
-                Alert.alert(
-                  "Please Select Bus Route",
-                  "You must select a bus route before proceeding.",
-                );
-              }
-            }
-          }
-            filled
-            style={{
-              position:"absolute",
-              width:"80%",
-              marginLeft:"10%",
-              marginTop: 500,
-              marginBottom: 20,
-              borderColor: COLORS.tertinary,
-            }}
-            disabled={!selectedRoute}
-          />
-          ) : null}
+                  if (!ticketQuantity) {
+                    Alert.alert(
+                      "Ticket Quantity Empty",
+                      "Please fill in the ticket quantity field."
+                    );
+                  } else {
+                    const [startRoute, endRoute , ppprice] = selectedRoute.split(" - ");
 
-          {/* <Button
-            title="Next"
-            onPress={() =>
-              navigation.navigate("TicketDetails", {
-                start_route: "selectedStartRoute",
-                    end_route: "selectedEndRout",
-                    // p_Id: passengerId,
-                    p_Id: "44444",
-                    p_Fname: "PassengerFirstName",
-                    p_Lname: "PassengerlastName",
-              })
-            }
-            filled
-            style={{
-              marginTop: 10,
-              marginBottom: 20,
-              borderColor: COLORS.tertinary,
-            }}
-          /> */}
+                    const totalPrice = parseFloat(ppprice) * parseInt(ticketQuantity); 
+
+
+                    navigation.navigate("TicketDetails", {
+                      start_route: startRoute,
+                      end_route: endRoute,
+                      p_Id: passengerId,
+                      p_Fname: PassengerFirstName,
+                      p_Lname: PassengerlastName,
+                      ticket_quantity: ticketQuantity,
+                      price_per_ticket:ppprice,
+                      total_price:totalPrice
+                    });
+                  }
+                } else {
+                  Alert.alert(
+                    "Please Select Bus Route",
+                    "You must select a bus route before proceeding."
+                  );
+                }
+              }}
+              filled
+              style={{
+                position: "absolute",
+                width: "80%",
+                marginLeft: "10%",
+                marginTop: 500,
+                marginBottom: 20,
+                borderColor: COLORS.tertinary,
+              }}
+              disabled={!selectedRoute}
+            />
+          ) : null}
         </View>
       </SafeAreaView>
     </LinearGradient>

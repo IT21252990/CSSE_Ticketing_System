@@ -15,14 +15,22 @@ import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from "@expo/vector-icons";
 import QRDisplay from "./QRDisplay";
 import { useRoute } from "@react-navigation/native";
-import {useParams} from 'react-router-native'
+import { useParams } from "react-router-native";
 
 const NewJourney = ({ navigation }) => {
   const route = useRoute();
 
-  const { start_route, end_route, p_Id, p_Fname, p_Lname , ticket_quantity } = route.params;
+  const {
+    start_route,
+    end_route,
+    p_Id,
+    p_Fname,
+    p_Lname,
+    ticket_quantity,
+    price_per_ticket,
+    total_price,
+  } = route.params;
 
- 
   return (
     <LinearGradient
       style={{
@@ -94,7 +102,7 @@ const NewJourney = ({ navigation }) => {
                   keyboardType="email-address"
                   style={{
                     width: "100%",
-                    color:"#000"
+                    color: "#000",
                   }}
                   editable={false}
                 />
@@ -130,7 +138,7 @@ const NewJourney = ({ navigation }) => {
                   keyboardType="email-address"
                   style={{
                     width: "100%",
-                    color:"#000"
+                    color: "#000",
                   }}
                   editable={false}
                 />
@@ -161,12 +169,12 @@ const NewJourney = ({ navigation }) => {
                 }}
               >
                 <TextInput
-                  value={p_Id}
+                  value={"LKR. " + price_per_ticket}
                   placeholderTextColor={"#000000"}
                   keyboardType="email-address"
                   style={{
                     width: "100%",
-                    color:"#000"
+                    color: "#000",
                   }}
                   editable={false}
                 />
@@ -198,11 +206,11 @@ const NewJourney = ({ navigation }) => {
               >
                 <TextInput
                   value={ticket_quantity}
-                  editable = {false}
+                  editable={false}
                   keyboardType="email-address"
                   style={{
                     width: "100%",
-                    color:"#000"
+                    color: "#000",
                   }}
                 />
               </View>
@@ -232,11 +240,11 @@ const NewJourney = ({ navigation }) => {
                 }}
               >
                 <TextInput
-                  placeholder="Enter your destination"
-                  placeholderTextColor={"#000000"}
-                  keyboardType="email-address"
+                  value={"LKR. " + total_price}
+                  editable={false}
                   style={{
                     width: "100%",
+                    color: "#000",
                   }}
                 />
               </View>
@@ -244,7 +252,9 @@ const NewJourney = ({ navigation }) => {
 
             <Button
               title="Edit Destination"
-              onPress={() => navigation.navigate("NewJourney")}
+              onPress={() => {
+                navigation.navigate("NewJourney");
+              }}
               filled
               style={{
                 marginTop: 18,
@@ -254,8 +264,19 @@ const NewJourney = ({ navigation }) => {
             />
 
             <Button
-              title="Generate QR"
-              onPress={() => navigation.navigate("QRDisplay")}
+              title="Next"
+              onPress={() =>
+                navigation.navigate("QRDisplay", {
+                  start_route:start_route,
+                  end_route:end_route,
+                  p_Id:p_Id,
+                  p_Fname:p_Fname,
+                  p_Lname:p_Lname,
+                  ticket_quantity:ticket_quantity,
+                  price_per_ticket:price_per_ticket,
+                  total_price:total_price,
+                })
+              }
               filled
               style={{
                 marginTop: 18,
