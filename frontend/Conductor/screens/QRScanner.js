@@ -6,7 +6,7 @@ import COLORS from "../constants/colors";
 
 
 
-export default function QRScanner({navigation}) {
+export default function QRScanner({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState('Not yet scanned')
@@ -56,30 +56,31 @@ export default function QRScanner({navigation}) {
       {/* <Text style={styles.maintext}>{text}</Text> */}
 
       {scanned && (<><Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' style={{
-          height: 70,
-          width: 200,
-          marginTop: 30,
-          marginBottom: 4,
-          backgroundColor: COLORS.primary,
-        }}/><Button
-        title="DONE"
-        onPress={() => navigation.navigate("QRScannedDetails")}
-        filled
-        style={{
-          height: 50,
-          width: 100,
-          marginTop: 30,
-          marginBottom: 4,
-          backgroundColor: COLORS.lightOrange,
-        }} /></>
-      
+        height: 70,
+        width: 200,
+        marginTop: 30,
+        marginBottom: 4,
+        backgroundColor: COLORS.primary,
+      }} />
+        <Button
+          title="DONE"
+          onPress={() => navigation.navigate("QRScannedDetails")}
+          filled
+          style={{
+            height: 50,
+            width: 100,
+            marginTop: 30,
+            marginBottom: 4,
+            backgroundColor: COLORS.lightOrange,
+          }} /></>
+
       )}
 
-      
+
 
     </View>
 
-    
+
   );
 }
 
