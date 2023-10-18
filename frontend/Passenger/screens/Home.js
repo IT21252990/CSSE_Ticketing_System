@@ -41,6 +41,9 @@ const Home = ({ navigation }) => {
       }}
       colors={["#ffffff", COLORS.secondary, "#ffffff"]}
     >
+      <View style={{width:"100%" , height:80, backgroundColor:COLORS.secondary,position:"absolute",marginTop:32}}>
+
+      </View>
         <View style={{ flex: 1, marginHorizontal: 10 }}>
           <Text
             style={{
@@ -59,7 +62,7 @@ const Home = ({ navigation }) => {
               fontSize: 20,
               fontWeight: 800,
               color: "#000000",
-              marginTop: 10,
+              marginTop: 30,
               marginLeft: 100,
             }}
           >

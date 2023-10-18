@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   StyleSheet,
+  Alert
 } from "react-native";
 import COLORS from "../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
@@ -73,13 +74,31 @@ const Profile = () => {
   };
 
   const logout = async () => {
-    try {
-      // Clear user data and navigate to the login screen (replace 'LoginScreen' with your actual login screen's name)
-      await AsyncStorage.removeItem('passengerInfo'); // Remove user data from storage
-      navigation.navigate('Login'); // Navigate to the login screen
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
+    // Display a confirmation alert before logging out
+    Alert.alert(
+      "Confirm Logout",
+      "Are you sure you want to log out?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "Logout",
+          onPress: async () => {
+            try {
+              // Clear user data and navigate to the login screen
+              await AsyncStorage.removeItem("passengerInfo");
+              navigation.navigate("Login");
+            } catch (error) {
+              console.error("Error logging out:", error);
+            }
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
 
   return (
@@ -89,6 +108,9 @@ const Profile = () => {
       }}
       colors={["#ffffff", COLORS.secondary, "#ffffff"]}
     >
+      <View style={{width:"100%" , height:80, backgroundColor:COLORS.secondary,position:"absolute",marginTop:32}}>
+
+</View>
       <View style={styles.container}>
 
         <Text style={styles.header}>My Profile</Text>
@@ -96,11 +118,11 @@ const Profile = () => {
         <View style={styles.userInfoContainer}>
           <Image
             source={require("../assets/pngegg.png")}
-            style={{ width: 100, height: 100, alignSelf: "center" , marginBottom:50 }}
+            style={{ width: 100, height: 100, alignSelf: "center" , marginBottom:50 ,marginTop:20}}
           />
           <Text style={styles.userInfoLabel}>User Name: {PassengerFirstName} {PassengerlastName}</Text>
           <Text style={styles.userInfoLabel}>User Email: {PassengerEmail}</Text>
-          <Text style={styles.userInfoLabel}>Mobile Number: {PassengerMobile}</Text>
+          <Text style={styles.userInfoLabel}>Mobile Number: {parseInt(PassengerMobile)}</Text>
           <Text style={styles.userInfoLabel}>
             Credits: {user.credits} credits
           </Text>

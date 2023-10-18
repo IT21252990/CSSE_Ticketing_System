@@ -38,6 +38,9 @@ const NewJourney = ({ navigation }) => {
       }}
       colors={[COLORS.primary, COLORS.tertinary]}
     >
+      <View style={{width:"100%" , height:80, backgroundColor:COLORS.secondary,position:"absolute",marginTop:32}}>
+
+</View>
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
         <View style={{ flex: 1, marginHorizontal: 22 }}>
           <TouchableOpacity
@@ -66,7 +69,8 @@ const NewJourney = ({ navigation }) => {
               style={{
                 fontSize: 22,
                 fontWeight: "bold",
-                marginVertical: 12,
+                marginVertical: 20,
+                marginTop:-10,
                 color: COLORS.black,
               }}
             >
@@ -254,18 +258,6 @@ const NewJourney = ({ navigation }) => {
               title="Edit Destination"
               onPress={() => {
                 navigation.navigate("NewJourney");
-              }}
-              filled
-              style={{
-                marginTop: 18,
-                marginBottom: 4,
-                borderColor: COLORS.tertinary,
-              }}
-            />
-
-            <Button
-              title="Pay"
-              onPress={() => {
               }}
               filled
               style={{

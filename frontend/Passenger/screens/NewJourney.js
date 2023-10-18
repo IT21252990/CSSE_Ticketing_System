@@ -80,6 +80,9 @@ const NewJourney = ({ navigation }) => {
       }}
       colors={[COLORS.primary, COLORS.tertinary]}
     >
+      <View style={{width:"100%" , height:80, backgroundColor:COLORS.secondary,position:"absolute",marginTop:32}}>
+
+</View>
       <SafeAreaView
         style={{
           flex: 1,

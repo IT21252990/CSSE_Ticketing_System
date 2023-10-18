@@ -15,8 +15,7 @@ import Button from "../components/Button";
 import { LinearGradient } from "expo-linear-gradient";
 import BottomTabNavigation from "../navigations/BottomTabNavigation";
 import Home from "./Home";
-import  AsyncStorage from '@react-native-async-storage/async-storage';
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Login = ({ navigation }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -39,22 +38,28 @@ const Login = ({ navigation }) => {
     }
 
     try {
-      const response = await fetch("http://192.168.86.72:4000/auth/passengerlogin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        "http://192.168.86.72:4000/auth/passengerlogin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
 
       if (response.ok) {
         const passengerData = await response.json();
         AsyncStorage.setItem("passengerInfo", JSON.stringify(passengerData));
         Alert.alert("Login successful");
         navigation.navigate("BottomTabNavigation");
+
+        setEmail("");
+        setPassword("");
       } else {
         Alert.alert("Invalid credentials");
       }
@@ -71,6 +76,9 @@ const Login = ({ navigation }) => {
       }}
       colors={[COLORS.primary, COLORS.secondary]}
     >
+      <View style={{width:"100%" , height:80, backgroundColor:COLORS.secondary,position:"absolute",marginTop:32}}>
+
+</View>
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
         <View style={{ flex: 1, marginHorizontal: 22 }}>
           <View style={{ marginVertical: 22 }}>
@@ -89,6 +97,7 @@ const Login = ({ navigation }) => {
               style={{
                 fontSize: 16,
                 color: COLORS.black,
+                marginTop:20
               }}
             >
               Hello again you have been missed!
@@ -159,7 +168,7 @@ const Login = ({ navigation }) => {
                 placeholderTextColor={COLORS.black}
                 secureTextEntry={!isPasswordShown}
                 value={password}
-              onChangeText={text => setPassword(text)}
+                onChangeText={(text) => setPassword(text)}
                 style={{
                   width: "100%",
                 }}

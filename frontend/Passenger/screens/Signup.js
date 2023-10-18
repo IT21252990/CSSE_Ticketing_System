@@ -102,6 +102,9 @@ const Signup = ({ navigation }) => {
       }}
       colors={[COLORS.primary, COLORS.tertinary]}
     >
+      <View style={{width:"100%" , height:80, backgroundColor:COLORS.secondary,position:"absolute",marginTop:32}}>
+
+</View>
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={{ flex: 1, marginHorizontal: 22 }}>
         <View style={{ marginVertical: 22 }}>
@@ -120,6 +123,7 @@ const Signup = ({ navigation }) => {
             style={{
               fontSize: 16,
               color: COLORS.black,
+              marginTop:20
             }}
           >
             Connect with WayFare today!
