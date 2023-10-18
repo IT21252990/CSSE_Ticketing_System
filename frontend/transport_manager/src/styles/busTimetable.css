@@ -1,13 +1,17 @@
 /* busTimetable.css */
+body {
+  background: linear-gradient(135deg, #e0f7fa, #f0f5f9); /* Gradient background */
+  color: #333; /* Dark text color */
+}
 
 .bus-timetable-container {
     max-width: 1000px;
     margin: 60px auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #9edce4;
   }
   
   .bus-timetable-heading {
@@ -20,21 +24,23 @@
   .search-container select {
     padding: 10px;
     width: 10%;
-    border: 1px solid #ccc;
+    border: 1px solid #90caf9;
     border-radius: 5px;
     outline: none;
     font-size: 14px;
     margin-left: 10px;
     height: 40px; /* Adjust the height to match the search input */
+    background: #e0f7fa;
   }
   
   .search-input {
     padding: 10px;
     width: 40%;
-    border: 1px solid #ccc;
+    border: 1px solid #90caf9;
     border-radius: 5px;
     outline: none;
     font-size: 14px;
+    background: #e0f7fa;
   }
   
   .search-input::placeholder {
@@ -50,9 +56,10 @@
   .table-heading {
     padding: 15px 10px;
     text-align: left;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #90caf9;
     font-weight: bold;
     color: #333;
+    background: #bbdefb;
     text-transform: uppercase;
   }
   
@@ -118,4 +125,23 @@
     font-size: 14px;
     margin-left: 490px;
   }
+  
+  .add-bus-button {
+    padding: 10px 20px;
+    margin: 20px;
+    margin-left: 1150px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db; /* Blue color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .add-bus-button:hover {
+    background-color: #2980b9; /* Darker blue color on hover */
+  }
+  
+  
+  
   

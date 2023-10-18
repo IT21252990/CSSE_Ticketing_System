@@ -1,0 +1,119 @@
+/* Apply styles only to elements within the .route-price-page class */
+body {
+  background: linear-gradient(135deg, #e0f7fa, #f0f5f9); /* Gradient background */
+  color: #333; /* Dark text color */
+}
+
+.route-price-page {
+  background-color: #f0f5f9; /* Light blue background */
+  color: #333; /* Dark text color */
+}
+
+.route-price-page .container {
+  display: flex;
+  background-color: #e0f7fa; /* White background for the container */
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.route-price-page .form-container {
+  width: 250px;
+  padding: 20px;
+  background-color: #9edce4; /* Light blue background for the form */
+  border-radius: 8px;
+  margin-right: 20px; /* Add margin to create a gap between form and table */
+}
+
+.route-price-page .form-container h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333; /* Dark text color */
+}
+
+.route-price-page .form-group {
+  margin-bottom: 15px;
+}
+
+.route-price-page .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #333; /* Dark text color */
+  
+}
+
+.route-price-page .form-group input {
+  width: calc(100% - 10px);
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #90caf9; /* Lighter blue border */
+  border-radius: 4px;
+}
+
+.route-price-page .form-group input:focus {
+  border-color: #2196f3; /* Blue border on focus */
+}
+
+.route-price-page .button-container {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.route-price-page .button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2196f3; /* Blue button background */
+  color: #fff; /* White button text */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.route-price-page .button-container button:hover {
+  background-color: #1976d2; /* Darker blue on hover */
+}
+
+.route-price-page .table-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #9edce4; /* Light blue background for the table */
+  border-radius: 8px;
+}
+
+.route-price-page .table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.route-price-page .table-container th, .route-price-page .table-container td {
+  padding: 12px;
+  border-bottom: 1px solid #90caf9; /* Lighter blue border */
+  text-align: left;
+  font-size: 16px;
+  color: #333; /* Dark text color */
+}
+
+.route-price-page .table-container th {
+  background-color: #bbdefb; /* Slightly darker blue for headers */
+  border-bottom: 1px solid #ccc;
+}
+
+
+.route-price-page .table-container td button {
+  margin: 0 5px;
+  padding: 7px 12px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.route-price-page .table-container td button:nth-child(2) {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.route-price-page .table-container td button:nth-child(2):hover {
+  background-color: #c0392b;
+}
