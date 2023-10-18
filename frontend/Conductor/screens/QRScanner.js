@@ -69,6 +69,7 @@ export default function QRScanner({ navigation }) {
           <Button
             title="DONE"
             onPress={() => navigation.navigate("QRScannedDetails")}
+            testID='scan-again-button'
             filled
             style={{
               height: 60,

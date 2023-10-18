@@ -1,6 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
-import Login from './Login';
+// import { render, fireEvent } from '@testing-library/react-native';
+import Login from '../screens/Login';
+import '@testing-library/jest-native/extend-expect';
+
 
 describe('Login Component', () => {
   test('Positive Test: Renders the Login component correctly', () => {
@@ -39,8 +41,6 @@ describe('Login Component', () => {
 
     fireEvent.press(loginButton);
 
-    // Add an assertion for displaying an error message or some relevant UI for invalid login
-    // For example, you can check if an error message is displayed on the screen.
-    // expect(getByText('Invalid credentials')).toBeTruthy();
+   
   });
 });

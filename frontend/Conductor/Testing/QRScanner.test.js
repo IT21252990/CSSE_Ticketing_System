@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
-import QRScanner from './QRScanner';
+// import { render, fireEvent } from '@testing-library/react-native';
+import QRScanner from '../screens/QRScanner';
+import '@testing-library/jest-native/extend-expect';
 
 describe('QRScanner', () => {
   test('renders "Not yet scanned" when not scanned', () => {
