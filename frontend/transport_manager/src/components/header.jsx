@@ -27,13 +27,13 @@ const Header = () => {
     <header className="header" style={{ height: '80px' }}>
       <Container>
         <Row className="align-items-center">
-          <Col xs={12} md={4}>
+          <Col xs={12} md={8}>
             <div className='appname'>
               <h2>WayFare Ticketing System</h2>
             </div>
           </Col>
 
-          <Col xs={12} md={8}>
+          <Col xs={12} md={4}>
             <nav className='navigation'>
               <ul className="menu">
                 {navLinks.map((item, index) => (

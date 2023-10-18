@@ -76,6 +76,10 @@ const BusTimetable = () => {
   const filteredBuses = filterStrategy.filter(buses, searchBusNo);
 
   return (
+    <div>
+    <button className="add-bus-button" onClick={() => navigate('/addNewbus')}>
+      Add New Bus
+      </button>
     <div className="bus-timetable-container">
       <h2 className="bus-timetable-heading">Bus Timetable</h2>
       <div className="search-container">
@@ -134,6 +138,7 @@ const BusTimetable = () => {
         </tbody>
       </table>
       <Toaster />
+    </div>
     </div>
   );
 };
