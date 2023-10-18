@@ -37,9 +37,9 @@ const QRDisplay = ({ navigation }) => {
       Passenger Name: ${p_Fname} ${p_Lname}\n
       Journey Start Location: ${start_route}\n
       Journey End Location: ${end_route}\n
-      Ticket Price : LKR. ${price_per_ticket}\n
+      Ticket Price : ${price_per_ticket}\n
       Ticket Quantity : ${ticket_quantity}\n
-      Total Price : LKR. ${total_price}\n`
+      Total Price : ${total_price}\n`
     );
     setShowQR(true); // Show the QR code when generated
   };
