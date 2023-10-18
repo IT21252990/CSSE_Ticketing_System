@@ -82,8 +82,6 @@ const Welcome = ({ navigation }) => {
           />
         </View>
 
-        {/* content  */}
-
         <View
           style={{
             paddingHorizontal: 22,
@@ -163,7 +161,6 @@ const Welcome = ({ navigation }) => {
               Already have an account ?
             </Text>
             <Pressable 
-            // onPress={() => navigation.navigate("Login")}
             onPress={() => navigation.navigate("Login")}
             >
               <Text

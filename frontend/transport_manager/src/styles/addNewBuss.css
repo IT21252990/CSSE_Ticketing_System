@@ -1,75 +1,83 @@
-/* addNewBus.css */
-
 .add-new-bus-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     padding: 20px;
     margin: 20px;
-    background-color: #f9f9f9;
     border-radius: 10px;
+    background-color: #f0f0f0; /* Added background color */
+}
+
+.left-side, .right-side {
+    padding: 20px; /* Added padding */
 }
 
 .left-side {
     display: flex;
     flex-direction: column;
+    background-color: #9edce4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Added border radius */
 }
 
 .right-side {
     display: flex;
     flex-direction: column;
+    background-color: #9edce4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Added border radius */
 }
 
 h2 {
     margin-bottom: 10px;
+    color: #333; /* Changed text color */
 }
 
-.form-group {
+.form-row {
+    display: flex;
     margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    width: 50%;
+    margin-right: 10px;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    font-size: 16px;
+    color: #333;
 }
 
 .form-group input {
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     font-size: 14px;
-    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #90caf9;
+    border-radius: 4px;
 }
 
 .form-group input:focus {
-    border-color: #3498db;
+    border-color: #2196f3;
 }
 
-.form-group input::placeholder {
-    color: #ccc;
+.button-container {
+    text-align: center;
+    margin-top: 10px;
 }
 
 .add-button {
-    margin-top: auto;
-    padding: 12px 24px;
+    padding: 10px 20px;
     font-size: 16px;
+    background-color: #2196f3;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    background-color: #3498db;
-    color: white;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    width: fit-content; /* Adjusted width to fit the content */
-    margin: 0 auto; /* Center the button */
 }
 
 .add-button:hover {
-    background-color: #2980b9;
-}
-
-.add-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    background-color: #1976d2;
 }

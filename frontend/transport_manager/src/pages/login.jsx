@@ -39,7 +39,7 @@ const Login = () => {
         
         const userData = await response.json();
         localStorage.setItem("userInfo", JSON.stringify(userData));
-        navigate("/home"); 
+        navigate("/busTimetable"); 
         toast.success("Login successful");
       } else {
         toast.error("Invalid credentials");

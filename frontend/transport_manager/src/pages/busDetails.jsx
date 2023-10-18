@@ -10,7 +10,7 @@ const BusDetailsPage = () => {
 
   return (
     <div>
-      <h2 className="page-title">{`${bus.busNo} - Bus Time Table`}</h2>
+      <h2 className="page-title">{`${bus.busNo} - Bus Details`}</h2>
       <div className="bus-details-container">
         <div className="info-line">
           <div className="info-item">
@@ -33,7 +33,7 @@ const BusDetailsPage = () => {
           </div>
         </div>
         <div className="info-line">
-          <label>Time Periods:</label>
+          
           <table className="time-periods-table">
             <thead>
               <tr>

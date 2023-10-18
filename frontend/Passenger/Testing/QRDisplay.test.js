@@ -1,18 +1,14 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
-import QRDisplay from './QRDisplay';
-
-// Positive Test Case: Render the component and check if it displays a QR code.
+// import { render, fireEvent } from '@testing-library/react-native';
+import QRDisplay from '../screens/QRDisplay';
+import '@testing-library/jest-native/extend-expect';
 test('Renders QR code with input', () => {
   const { getByText, getByPlaceholderText, getByTestId } = render(<QRDisplay />);
 
-  // Find and interact with the input field
   const inputField = getByPlaceholderText('Enter text');
-  fireEvent.changeText(inputField, 'Test Text'); // Change the input text
+  fireEvent.changeText(inputField, 'Test Text'); 
   const generateButton = getByText('Generate QR Code');
-  fireEvent.press(generateButton); // Click the button
-
-  // Check if the QR code is displayed
+  fireEvent.press(generateButton); 
   const qrCode = getByTestId('qr-code');
   expect(qrCode).toBeTruthy();
 });

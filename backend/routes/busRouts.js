@@ -1,7 +1,60 @@
 const express = require('express');
 const router = express.Router();
 const Bus = require('../models/busModel');
-const Routes = require('../models/busrouteModel');
+const Price = require('../models/busrouteModel');
+
+//bus price route
+
+router.post('/add-route', async (req, res) => {
+    try {
+        const { start_point, end_point, price } = req.body;
+
+        const route = new Price({  // Use the correct model name here
+            start_point,
+            end_point,
+            price
+        });
+
+        await route.save();
+        res.status(200).json({ message: 'Route added successfully', route });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+//GET all routes
+router.get('/getprice', async (req, res) => {
+    try {
+        const routes = await Price.find();  // Use the correct model name here
+        res.status(200).json(routes);
+        
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Update a route
+router.put('/update-route/:id', async (req, res) => {
+    try {
+        const { start_point, end_point, price } = req.body;
+        const updatedRoute = await Price.findByIdAndUpdate(req.params.id, { start_point, end_point, price }, { new: true });
+        res.status(200).json(updatedRoute);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
+// Delete a route
+router.delete('/delete-route/:id', async (req, res) => {
+    try {
+        await Price.findByIdAndDelete(req.params.id);
+        res.status(200).json({ message: 'Route deleted successfully' });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
+
+//______________________________________________________________________________________________________
 
 
 // Route to add a new bus
@@ -105,35 +158,6 @@ router.put('/:id', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
-//bus price route
-
-router.post('/add-route', async (req, res) => {
-    try {
-        const { start_point, end_point, price } = req.body;
-
-        const route = new Routes({  // Use the correct model name here
-            start_point,
-            end_point,
-            price
-        });
-
-        await route.save();
-        res.status(200).json({ message: 'Route added successfully', route });
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
-//GET all routes
-router.get('/get-routes', async (req, res) => {
-    try {
-        const routes = await Routes.find();
-        res.status(200).json(routes);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
 
 
 
