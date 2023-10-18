@@ -117,9 +117,12 @@ router.post('/conductor/login', async (req, res) => {
         
         
           res.json({
-            
-            username: conductor.conductor_username,
-            
+                _id: conductor._id,
+                busNo:conductor.busNo,
+                start_route:conductor.start_route,
+                end_route: conductor.end_route,
+                conductorName:conductor.conductor,
+                username: conductor.conductor_username
           });
         
       } else {
@@ -127,6 +130,23 @@ router.post('/conductor/login', async (req, res) => {
       }
     } catch (error) {
       res.status(400).send(error.message);
+    }
+  });
+
+  //Get credits for a user
+  router.get('/:userId/credits', async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const passenger = await Passenger.findById(userId);
+  
+      if (!passenger) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.json({ credits: passenger.credits });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
     }
   });
 

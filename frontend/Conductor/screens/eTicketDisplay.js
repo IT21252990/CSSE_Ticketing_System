@@ -43,7 +43,7 @@ const QRDisplay = ({ navigation }) => {
     useEffect(() => {
       const fetchCredits = async () => {
         try {
-          const response = await fetch(`http://localhost:4000/users/${userId}/credits`);
+          const response = await fetch(`http://192.168.171.186/users/${userId}/credits`);
           const data = await response.json();
           if (response.ok) {
             setCredits(data.credits);
@@ -70,7 +70,7 @@ const QRDisplay = ({ navigation }) => {
 
     else {
       try {
-        const response = await fetch("http://192.168.78.186:4000/ticket/add", {
+        const response = await fetch("http://192.168.171.186:4000/ticket/add", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

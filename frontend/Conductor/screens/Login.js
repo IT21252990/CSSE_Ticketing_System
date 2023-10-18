@@ -18,7 +18,7 @@ const Login = ({ navigation }) => {
 
   const handleConductorLogin = async () => {
     try {
-      const response = await fetch('http://192.168.78.186:4000/auth/conductor/login', {
+      const response = await fetch('http://192.168.171.186:4000/auth/conductor/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ const Login = ({ navigation }) => {
                 <TextInput
                   placeholder='Enter your password'
                   placeholderTextColor={COLORS.black}
-                  secureTextEntry={isPasswordShown}
+                  secureTextEntry={!isPasswordShown}
                   style={{ width: '100%' }}
                   value={password}
                   onChangeText={(text) => setPassword(text)}

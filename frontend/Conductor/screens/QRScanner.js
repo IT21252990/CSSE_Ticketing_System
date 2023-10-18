@@ -10,6 +10,12 @@ export default function QRScanner({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState('Not yet scanned')
+  const [passengerName, setPassengerName] = useState('')
+  const [startLocation, setStartLocation] = useState('')
+  const [endLocation, setEndLocation] = useState('')
+  const [ticketPrice, setTicketPrice] = useState('')
+  const [ticketQuantity, setTicketQuantity] = useState('')
+  const [totalPrice, setTotalPrice] = useState('')
 
   const askForCameraPermission = () => {
     (async () => {
@@ -26,8 +32,36 @@ export default function QRScanner({ navigation }) {
   // What happens when we scan the bar code
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    setText(data)
-    console.log('Type: ' + type + '\nData: ' + data)
+    setText(data);
+    handleQRScanned(data); // Call the function to handle the scanned data
+  };
+
+  const handleQRScanned = (scannedData) => {
+    const lines = scannedData.split('\n'); // Split the data into lines
+
+    const passengerId = lines[0].split(': ')[1]; // Extract passenger ID
+    const passengerName = lines[2].split(': ')[1]; // Extract passenger Name
+    const startLocation = lines[4].split(': ')[1]; // Extract start location
+    const endLocation = lines[6].split(': ')[1]; // Extract end location
+    const ticketPrice = lines[8].split(': ')[1]; // Extract ticket price
+    const ticketQuantity = lines[10].split(': ')[1]; // Extract ticket quantity
+    const totalPrice = lines[12].split(': ')[1]; // Extract total price
+
+    console.log('Passenger ID:', passengerId);
+    console.log('Passenger Name:', passengerName);
+    console.log('Start Location:', startLocation);
+    console.log('End Location:', endLocation);
+    console.log('Ticket Price:', ticketPrice);
+    console.log('Ticket Quantity:', ticketQuantity);
+    console.log('Total Price:', totalPrice);
+
+    setPassengerName(passengerName);
+    setStartLocation(startLocation);
+    setEndLocation(endLocation);
+    setTicketPrice(ticketPrice);
+    setTicketQuantity(ticketQuantity);
+    setTotalPrice(totalPrice);
+
   };
 
   // Check permissions and return the screens
@@ -68,7 +102,14 @@ export default function QRScanner({ navigation }) {
         }} />
           <Button
             title="DONE"
-            onPress={() => navigation.navigate("QRScannedDetails")}
+            onPress={() => navigation.navigate("QRScannedDetails",{
+                userId:"652cd67e91bbf39b53498639",
+                startLocation: {startLocation},
+                endLocation: {endLocation},
+                pricePerTicket: {ticketPrice},
+                ticketQuantity: {ticketQuantity},
+                totalPrice: {totalPrice}
+            })}
             testID='scan-again-button'
             filled
             style={{

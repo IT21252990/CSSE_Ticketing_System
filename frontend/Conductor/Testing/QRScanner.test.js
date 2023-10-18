@@ -1,5 +1,12 @@
 import React from 'react';
 // import { render, fireEvent } from '@testing-library/react-native';
+
+jest.mock('expo-barcode-scanner', () => ({
+  BarCodeScanner: {
+    requestPermissionsAsync: jest.fn(),
+  },
+}));
+
 import QRScanner from '../screens/QRScanner';
 import '@testing-library/jest-native/extend-expect';
 

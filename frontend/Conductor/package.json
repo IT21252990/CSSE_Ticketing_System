@@ -9,13 +9,16 @@
     "web": "expo start --web",
     "test": "jest"
   },
-
-  
   "jest": {
-    "preset": "react-native"
-  },
+    "preset": "react-native",
   
+    "transform": {
+      "\\.(js|jsx)$": "babel-jest",
+      "\\.(jpg|jpeg|png|gif|webp|svg)$": "<rootDir>/node_modules/react-native/jest/assetFileTransformer.js"
+    }
+  },
   "dependencies": {
+    "@expo/vector-icons": "^13.0.0",
     "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-navigation/bottom-tabs": "^6.5.9",
     "@react-navigation/native": "^6.1.8",
