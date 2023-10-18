@@ -53,7 +53,7 @@ const Profile = () => {
 
   const [isEditProfileModalVisible, setEditProfileModalVisible] =
     useState(false);
-  const [isChangePasswordModalVisible, setChangePasswordModalVisible] =
+  const [topUpAccountModalVisible, setTopUpAccountModalVisible] =
     useState(false);
 
   // User information
@@ -65,12 +65,9 @@ const Profile = () => {
   };
 
   const editProfile = () => {
-    // Implement your logic for editing user profile here
-    // You can use a state management solution like Redux or context API to update user information
   };
 
-  const changePassword = () => {
-    // Implement your logic for changing the password here
+  const topUpAccount = () => {
   };
 
   const logout = async () => {
@@ -136,8 +133,8 @@ const Profile = () => {
           />
           <Button
            style={{margin:20}}
-            title="Reset Password"
-            onPress={() => setChangePasswordModalVisible(true)}
+            title="Pop-Up Account "
+            onPress={() => setTopUpAccountModalVisible(true)}
           />
           <Button  style={{margin:20}} title="Logout" onPress={logout} />
         </View>
@@ -155,15 +152,15 @@ const Profile = () => {
           </View>
         </Modal>
 
-        {/* Change Password Modal */}
-        <Modal visible={isChangePasswordModalVisible} animationType="slide">
+        {/* Top-Up account Modal */}
+        <Modal visible={topUpAccountModalVisible} animationType="slide">
           <View style={styles.modalContainer}>
-            <Text style={styles.modalHeader}>Change Password</Text>
-            {/* Add input fields for changing the password */}
-            <Button title="Change Password" onPress={changePassword} />
+            <Text style={styles.modalHeader}>Top-Up Account</Text>
+            {/* Add input fields for Top-Up account */}
+            <Button title="Top-Up Account" onPress={topUpAccount} />
             <Button
               title="Close"
-              onPress={() => setChangePasswordModalVisible(false)}
+              onPress={() => setTopUpAccountModalVisible(false)}
             />
           </View>
         </Modal>

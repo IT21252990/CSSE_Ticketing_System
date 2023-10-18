@@ -1,6 +1,7 @@
 import React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react-native";
-import Login from "./Login";
+// import { render, fireEvent, waitFor } from "@testing-library/react-native";
+import Login from "../screens/Login";
+import '@testing-library/jest-native/extend-expect';
 
 test("Positive Test: Renders the Login component", () => {
   const { getByText, getByPlaceholderText } = render(<Login />);

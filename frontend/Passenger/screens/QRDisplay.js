@@ -16,8 +16,8 @@ import QRCode from "react-native-qrcode-svg";
 import { useRoute } from "@react-navigation/native";
 
 const QRDisplay = ({ navigation }) => {
-  const [qrvalue, setQrvalue] = useState(null); // Initialize as null
-  const [showQR, setShowQR] = useState(false); // Tracks whether to show the QR code
+  const [qrvalue, setQrvalue] = useState(null); 
+  const [showQR, setShowQR] = useState(false); 
   const route = useRoute();
 
   const {

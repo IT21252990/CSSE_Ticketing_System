@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
-import Signup from './Signup';
+// import { render, fireEvent } from '@testing-library/react-native';
+import '@testing-library/jest-native/extend-expect';
+import Signup from '../screens/Signup';
 
 describe('Signup Component', () => {
   it('renders the component', () => {

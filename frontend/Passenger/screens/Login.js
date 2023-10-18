@@ -193,7 +193,6 @@ const Login = ({ navigation }) => {
           <Button
             title="Login"
             onPress={handleLogin}
-            // onPress={navigation.navigate("BottomTabNavigation")}
             filled
             style={{
               marginTop: 18,
